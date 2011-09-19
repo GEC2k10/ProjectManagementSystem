@@ -15,7 +15,7 @@ if($row['uname']=="")
 }
 else 
 {
-	$ID="hello";
+	$ID="hell";
 	$query="update Accounts set loginStatus='1',sessionID='".$ID."' where uname='".$row['uname']."'";
 	mysql_query($query,$con);
 	mysql_close($con);
