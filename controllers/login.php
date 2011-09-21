@@ -16,10 +16,15 @@ if($row['uname']=="")
 else 
 {
 	for($i=0;$i<40;$i++)
-        	if($i%2==0)
-                	 $ID=$ID.chr(rand(97,123));
-	        else if($i%3)
+	{
+		$list=rand(0,3);
+        	if($list==0)
+                	 $ID=$ID.chr(rand(97,122));
+	        elseif($list==1)
         	        $ID=$ID.chr(rand(48,57));
+		else 
+			$ID=$ID.chr(rand(65,90));
+	}
 	$query="update Accounts set loginStatus='1',sessionID='".$ID."' where uname='".$row['uname']."'";
  	mysql_query($query,$con);
 	mysql_close($con);
