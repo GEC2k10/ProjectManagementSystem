@@ -1,0 +1,8 @@
+This project intends in creating a GitHub like repository system to work in a local network working on a central server.
+*This is our first project.So dont be surprised to see something that is not ought to be here*
+Creates user accounts for all the users,authenticate the users and provide access to their own repos only,which will be most probably their own academic (college) projects.Thus all the repos will be private(acessible only to a team,not single user).
+Languages in use:
+ *PHP
+ *Python
+ *Well ofcourse HTML and MySQL
+
