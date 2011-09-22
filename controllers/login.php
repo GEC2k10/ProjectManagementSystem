@@ -28,8 +28,10 @@ else
 	$query="update Accounts set loginStatus='1',sessionID='".$ID."' where uname='".$row['uname']."'";
  	mysql_query($query,$con);
 	mysql_close($con);
-	header("Location:homePage.php?ssid=$ID");
+	session_start();
+	$_SESSION['username']=$row['uname'];
+	header("Location:homePage.php");
 }
 ?>
 </body>
-</html?
+</html>

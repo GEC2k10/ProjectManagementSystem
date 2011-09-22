@@ -1,6 +1,4 @@
 import random
-if __name__ == "__main__":
-	gen()
 def gen():
 	small='a b c d e f g h i j k l m n o p q r s t u v w x y z'
 	caps=small.upper().split()
@@ -18,7 +16,9 @@ def gen():
 			lst=num
 		passwd+=lst[random.randint(0,len(lst)-1)]
 	return passwd
-
+if __name__ == "__main__":
+	print gen()
+  
 
 
 
