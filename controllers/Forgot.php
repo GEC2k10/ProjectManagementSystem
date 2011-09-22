@@ -1,4 +1,4 @@
-<script language="php">
+<?php
 $con = mysql_connect("localhost","root","mysql");
 mysql_select_db("GitRepo",$con);
 $query="select * from Accounts where uname=\"".$_POST["uname"]." \"; ";
