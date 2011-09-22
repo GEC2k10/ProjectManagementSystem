@@ -15,21 +15,14 @@ if($row['uname']=="")
 }
 else 
 {
-	for($i=0;$i<40;$i++)
-	{
-		$list=rand(0,3);
-        	if($list==0)
-                	 $ID=$ID.chr(rand(97,122));
-	        elseif($list==1)
-        	        $ID=$ID.chr(rand(48,57));
-		else 
-			$ID=$ID.chr(rand(65,90));
-	}
-	$query="update Accounts set loginStatus='1',sessionID='".$ID."' where uname='".$row['uname']."'";
+
+	$query="update Accounts set loginStatus='1',sessionID='0' where uname='".$row['uname']."'";
  	mysql_query($query,$con);
 	mysql_close($con);
-	header("Location:homePage.php?ssid=$ID");
+	session_start();
+	$_SESSION['username']=$row['uname'];
+	header("Location:homePage.php");
 }
 ?>
 </body>
-</html?
+</html>
