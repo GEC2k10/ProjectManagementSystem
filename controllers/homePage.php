@@ -3,7 +3,7 @@
 	session_start();
 	$con=mysql_connect("localhost",'root','root-user');
 	mysql_select_db("GitRepoForPHP");
-	$query = sprintf("SELECT * FROM Accounts WHERE uname='".$_SESSION['username']."'");
+	$query = sprintf("SELECT * FROM Accounts WHERE uname='$_SESSION[username]'");
 	$reply=mysql_query($query,$con);
 	if (mysql_num_rows($reply)==0)
 	{

@@ -8,6 +8,7 @@ $query = sprintf("SELECT * FROM Accounts WHERE uname='%s' AND passwd='%s'",
 	mysql_real_escape_string(sha1($_POST[passwd])));
 $reply=mysql_query($query,$con);
 $row=mysql_fetch_assoc($reply);
+mysql_close($con);
 if($row['uname']=="")
 {
 	echo "Incorrect user name or password "; 
@@ -15,10 +16,6 @@ if($row['uname']=="")
 }
 else 
 {
-
-	$query="update Accounts set loginStatus='1',sessionID='0' where uname='".$row['uname']."'";
- 	mysql_query($query,$con);
-	mysql_close($con);
 	session_start();
 	$_SESSION['username']=$row['uname'];
 	header("Location:homePage.php");
