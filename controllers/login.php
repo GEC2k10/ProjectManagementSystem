@@ -2,7 +2,7 @@
 <br><br><br><br><center>
 <?php
 $con=mysql_connect("localhost",'root','root-user');
-mysql_select_db("GitRepoForPHP");
+mysql_select_db("GitRepo");
 $query = sprintf("SELECT * FROM Accounts WHERE uname='%s' AND passwd='%s'",
 	mysql_real_escape_string($_POST[uname]),
 	mysql_real_escape_string(sha1($_POST[passwd])));
