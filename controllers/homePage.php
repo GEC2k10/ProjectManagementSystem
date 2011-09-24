@@ -24,12 +24,6 @@
 	<input type='file' name='file' id='file'>
 	<input type='submit' value='git add'>
 </form>
-
-<form method='post' action=
-<form method='post' action=
-<form method='post' action=
-<form method='post' action=
-<form method='post' action=
 </font>
 </body>
 </html>
