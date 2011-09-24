@@ -1,7 +1,7 @@
 <html><body style="background-image: url(../views/images.png); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
 <br><br><br><br><center>
 <?php
-$con=mysql_connect("localhost",'root','root-user');
+$con=mysql_connect("localhost",'root','password');
 mysql_select_db("GitRepo");
 $query = sprintf("SELECT * FROM Accounts WHERE uname='%s' AND passwd='%s'",
 	mysql_real_escape_string($_POST[uname]),
@@ -11,7 +11,8 @@ $row=mysql_fetch_assoc($reply);
 mysql_close($con);
 if($row['uname']=="")
 {
-	echo "Incorrect user name or password "; 
+	echo "Incorrect user name or password ";
+        header("Location:/lag/views/loginwrong.html");
 	exit;
 }
 else 
