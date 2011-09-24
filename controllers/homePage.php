@@ -1,7 +1,7 @@
 <html>
 <?php
 	session_start();
-	$con=mysql_connect("localhost",'root','root-user');
+	$con=mysql_connect("localhost",'root','password');
 	mysql_select_db("GitRepo");
 	$query = sprintf("SELECT * FROM Accounts WHERE uname='".$_SESSION['username']."'");
 	$reply=mysql_query($query,$con);
