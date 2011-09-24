@@ -1,4 +1,4 @@
-<script language="php">
+<?php
 function ValidateEmail($email)   // Validates an Email 
 {
     if(ereg("^.+@.+\\..+$",$email)) // using regular expressions 
@@ -11,5 +11,5 @@ function ValidateInput(&$input)   // removes scripting tags from input
 {
     ereg_replace("^< .+ >$","",$input); // regex used again
 }
-</script>
+?>
 
