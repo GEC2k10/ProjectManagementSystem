@@ -20,8 +20,8 @@
 <left>Welcome <a href='profiles.php'><b><i><?php echo $row['uname'];?></a></b></i></left>
 <a href='logout.php'><right>Logout</right></a><br>
 <left><font size="4">Project name :</font><?php echo " ".$row['projectName']; ?></left>
-<form method='post' action='gitCommands/upload.php'>
-	<input type='file' name='file' id='file'>
+<form method='post' enctype="multipart/form-data" action='gitCommands/upload.php'>
+	<input type='file' name='file'>
 	<input type='submit' value='git add'>
 </form>
 </font>

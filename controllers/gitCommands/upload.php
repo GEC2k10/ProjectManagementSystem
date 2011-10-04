@@ -1,8 +1,7 @@
 <html>
 <?php
-	echo $_FILES["uploadedfile"]["tmp_name"];
-	$target='repos/';
-	$target=$target.$_FILES['uploadedfile']['name'];
-	move_uploaded_file($_FILES['uploadedfile']['tmp_name'],$target);
+	$target='/home/rajeevs/lag/controllers/gitCommands/repos/';
+	$target=$target.basename($_FILES['file']['name']);
+	move_uploaded_file($_FILES['file']['tmp_name'],$target);
 ?>
 </html>
