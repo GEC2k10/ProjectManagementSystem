@@ -3,6 +3,7 @@
 	session_start();
 	$con=mysql_connect("localhost",'root','root-user');
 	mysql_select_db("GitRepo");
+	echo "<title>Homepage of ".$_SESSION['username']."</title>";
 	$query = sprintf("SELECT * FROM Accounts WHERE uname='".$_SESSION['username']."'");
 	$reply=mysql_query($query,$con);
 	if (mysql_num_rows($reply)==0)
@@ -13,6 +14,10 @@
 		exit;
 	}
 	$row=mysql_fetch_assoc($reply);
+	if($row['activationStatus']=='0')
+	{
+		header("location:../views/activate.html");
+	}
 	mysql_close($con);
 ?>
 <body style="background-image: url(../views/images.png); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">

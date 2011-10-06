@@ -19,7 +19,7 @@ cursor.execute(query)
 row=cursor.fetchone()
 while row:
 	randword=randPass.gen()
-	query=" update Accounts set passwd=SHA1('"+randword+"'),passwordMailed='1'"
+	query=" update Accounts set passwd=SHA1('"+randword+"'),passwordMailed='1' where uname='"+row[0]+"'";
 	updateCursor.execute(query)
 	handle["To"]=row[3]
 	message=''' This is a computer generated Email.Please note That reply to this address may not be monitered

@@ -23,7 +23,14 @@ else
 {
 	session_start();
 	$_SESSION['username']=$row['uname'];
+	if($row['activationStatus']=='0')
+	{
+		header("Location:../views/activate.html");
+	}
+	else
+	{
 	header("Location:homePage.php");
+	}
 }
 ?>
 </body>
