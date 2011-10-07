@@ -1,6 +1,6 @@
 import MySQLdb
 import os
-db = MySQLdb.connect(host="localhost",user="root",passwd="root-user",db="GitRepo")
+db = MySQLdb.connect(host="localhost",user="root",passwd="password",db="GitRepo")
 cursor = db.cursor()
 projectList=''
 fp=open("data.txt","w")
@@ -15,10 +15,7 @@ for i in range(0,n):
 	fp.write(data)
 fp.close()
 projectList=projectList.split()
-target='/home/rajeevs/lag/controllers/gitCommands/repos/';
+target='/var/www/lag/controllers/gitCommands/repos/';
 for i in projectList:
 	os.system("mkdir "+target+i)
-cursor.execute(" load data local infile \"/var/www/data.txt\" into table Accounts fields terminated by \"|\"")
-
-
-
+cursor.execute(" load data local infile \"/var/www/lag/python/data.txt\" into table Accounts fields terminated by \"|\"")

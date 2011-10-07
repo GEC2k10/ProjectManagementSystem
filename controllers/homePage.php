@@ -4,7 +4,7 @@
 	$con=mysql_connect("localhost",'root','password');
 	mysql_select_db("GitRepo");
 	echo "<title>Homepage of ".$_SESSION['username']."</title>";
-	$query = sprintf("SELECT * FROM Accounts WHERE uname='".$_SESSION['username']."'");
+	$query = sprintf("SELECT * FROM Accounts WHERE sessionID='".$_SESSION['SessionID']."'");
 	$reply=mysql_query($query,$con);
 	if (mysql_num_rows($reply)==0)
 	{

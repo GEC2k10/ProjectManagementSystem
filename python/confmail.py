@@ -7,7 +7,7 @@ import randPass
 handle=MIMEMultipart()
 handle["From"]="gecgitrepoitory@gmail.com"
 handle["Subject"]=" Confirmation Email from  GEC Git Repo "
-db = MySQLdb.connect(host="localhost",user="root",passwd="root-user",db="GitRepo")
+db = MySQLdb.connect(host="localhost",user="root",passwd="password",db="GitRepo")
 cursor=db.cursor()
 updateCursor=db.cursor()
 passwd=raw_input("Enter password ");

@@ -6,7 +6,7 @@
   {
   	header("location:../views/login.html");
   }
-  $con = mysql_connect("localhost",'root','root-user');
+  $con = mysql_connect("localhost",'root','password');
   mysql_select_db("GitRepo",$con);
   $query="SELECT * FROM Accounts WHERE uname='$_SESSION[username]' AND passwd=sha1('$_POST[passwd]') AND activationStatus='0'";
   $reply=mysql_query($query,$con);
