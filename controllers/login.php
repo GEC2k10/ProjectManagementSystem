@@ -4,7 +4,7 @@
 /***********************************************************
 This script is the backend of the login.html page.The script in this page does all the login related actions like verify password,set session ID etc.
 ***********************************************************/
-$con=mysql_connect("localhost",'root','password');
+$con=mysql_connect("localhost",'root','root');
 if(!$con)
 	echo "fail";
 mysql_select_db("GitRepo");

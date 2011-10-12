@@ -4,7 +4,7 @@
 homePage.php is the homepage of a current user.Contains the buttons to perform git actions.
 ***************************************************************************************/
 	session_start();
-	$con=mysql_connect("localhost",'root','password');
+	$con=mysql_connect("localhost",'root','root');
 	mysql_select_db("GitRepo");
 	$query = "SELECT * FROM Accounts WHERE sessionID='".$_SESSION['SessionID']."'";
 	//Selects row that matches sessionId of current session.The session ID was written into the database in the login page.

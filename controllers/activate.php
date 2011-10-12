@@ -5,7 +5,7 @@
   if(!$_SESSION['SessionID'])
     	header("location:../views/login.html");
 //prevent activation of logged out session
-  $con = mysql_connect("localhost",'root','password');
+  $con = mysql_connect("localhost",'root','root');
   mysql_select_db("GitRepo",$con);
   $query="SELECT * FROM Accounts WHERE sessionID='$_SESSION[SessionID]' AND passwd=sha1('$_POST[passwd]') AND activationStatus='0'";
 //here passwd refers to the confirmation code sent to user via e-mail,sessionid was set at login page
