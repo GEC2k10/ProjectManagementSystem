@@ -1,6 +1,6 @@
 <html>
 <?php
-	$con=mysql_connect("localhost",'root','root');
+	$con=mysql_connect("localhost",'root','password');
         mysql_select_db("GitRepo");
         $query = sprintf("SELECT * FROM Accounts WHERE uname='".$_GET['username']."'"."and sessionID='".$_GET['ssid']."'");
         $reply=mysql_query($query,$con);
