@@ -26,24 +26,22 @@ homePage.php is the homepage of a current user.Contains the buttons to perform g
 ?>
 <body style="background-image: url(../views/images.png); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
 <font face='Ubuntu'>
-<h1><center>Welcome <a href='profiles.php'><b><i><?php echo $row['uname'];?></a></b></i></center></h1>
-<form method='post' action='logout.php'>
+<h1><center><font color=white> Welcome <b><?php echo $row['uname'];?></a></b></font></center></h1>
+<form method='post' action='logout.php' align='right'>
         <input type='submit' value='Logout'>
 </form>
-<font size="6">Project name :<?php echo " ".$row['projectName']; ?></font><br><br>
+<font size="6" color="white">Project name :<?php echo " ".$row['projectName']; ?></font><br><br>
 <form method='post' enctype="multipart/form-data" action='gitCommands/upload.php'>
 	<input type='file' name='file'>
-	<input type='submit' value='git add'>
+	<input type='submit' value='Upload'>
 </form>
-<form method='post' action='gitCommands/add.php'>
-        <input type='submit' value='git add .'>
 </form>
-<form method='post' action='gitCommands/commit.php'>
-        <input type='submit' value='git commit'>
 </form>
 <form method='post' action='gitCommands/download.php'>
         <input type='submit' value='Download all files'>
-</form> 
-</font>
+</form>
+</font> 
+<font><iframe src="./gitCommands/repos/2010441" width="100%" height="300"</font></iframe>
+
 </body>
 </html>

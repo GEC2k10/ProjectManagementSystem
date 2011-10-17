@@ -1,7 +1,9 @@
 <html>
 <?php
-	$target='/var/www/lag/controllers/gitCommands/repos/';
+	session_start();
+	$target="/var/www/lag/controllers/gitCommands/repos/".$_SESSION['username']."/";
 	$target=$target.basename($_FILES['file']['name']);
 	move_uploaded_file($_FILES['file']['tmp_name'],$target);
+	header("location:../homePage.php");
 ?>
 </html>

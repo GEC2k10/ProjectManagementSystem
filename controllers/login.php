@@ -40,6 +40,7 @@ else
 	}
 
 	$_SESSION['SessionID']=$SessionID;
+        $_SESSION['username']=$row['uname'];
 //defined session ID for current user's current session
 	$query="UPDATE Accounts SET sessionID=\"".$SessionID."\" where uname='$row[uname]'";
 //Saved generated Session ID to database so that it can be used as a key in other pages of the same session
