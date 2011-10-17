@@ -12,7 +12,7 @@
   $reply=mysql_query($query,$con);
   $row = mysql_fetch_assoc($reply);
   if($row['uname']=='')
-//  	header("location:homePage.php");
+  	header("location:homePage.php");
 	//never show this page if already activated
 //------------------------------Checking entered values-------------------------------------------------//
   if($_POST['newPassword']!=$_POST['repeatPassword'])

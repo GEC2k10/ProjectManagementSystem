@@ -1,5 +1,5 @@
 <?php
-$con = mysql_connect("localhost","root","mysql");
+$con = mysql_connect("localhost","root","password");
 mysql_select_db("GitRepo",$con);
 $query="select * from Accounts where uname=\"".$_POST["uname"]." \"; ";
 $result=mysql_execute($query,$con);
