@@ -11,7 +11,6 @@ sessionID=randPass.gen()
 for i in range(0,n):
 	admno=raw_input("Enter admission number of user "+str(i+1)+" ")
 	project=raw_input("Enter project name of user "+str(i+1)+" ")
-	os.system("mkdir "+target+admno) #Creating a folder for each user
 	if project not in projectList:
 		projectList+=project+" "
 	email=raw_input("Enter email ID of user "+str(i+1)+" ")

@@ -25,6 +25,7 @@ homePage.php is the homepage of a current user.Contains the buttons to perform g
 		//This may seem to be pointless here as it is a repeatation of script in login page.But this is necessary to avoid the user from acessing the homepage by bypassing the activation process 
 	mysql_close($con);
 ?>
+<?php echo $_SESSION['message'];$_SESSION['message']=''; ?>
 <body style="background-image: url(../views/images.png); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
 <font face='Ubuntu'>
 <h1><center>Welcome <a href='profiles.php'><b><i><?php echo $row['uname'];?></a></b></i></center></h1>
@@ -32,10 +33,6 @@ homePage.php is the homepage of a current user.Contains the buttons to perform g
         <input type='submit' value='Logout'>
 </form>
 <font size="6">Project name :<?php echo " ".$row['projectName']; ?></font><br><br>
-<form method='post' enctype="multipart/form-data" action='gitCommands/upload.php'>
-	<input type='file' name='file'>
-	<input type='submit' value='git add'>
-</form>
 <form method='post' action='gitCommands/add.php'>
         <input type='submit' value='git add .'>
 </form>
