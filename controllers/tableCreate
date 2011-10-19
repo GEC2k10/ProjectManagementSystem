@@ -1,2 +1,4 @@
 use GitRepo
 create table Accounts ( uname varchar(32) primary key, passwd varchar(40),projectName varchar(32), email varchar(100) unique, secuQ varchar(100), secuA varchar(25), activationStatus char(1), sessionID varchar(40),passwordMailed char(1));
+
+create table Guide ( Project char(40) primary key, Email char(40) unique,password varchar(40),passwordMailed char(1))

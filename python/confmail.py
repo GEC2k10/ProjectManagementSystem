@@ -1,3 +1,4 @@
+#This script will send comformation Mail to the users and guides
 import smtplib
 import string
 import MySQLdb
@@ -17,6 +18,7 @@ server.login("gecgitrepository@gmail.com",passwd)
 query="select * from Accounts where passwordMailed !='1'"
 cursor.execute(query)
 row=cursor.fetchone()
+#Sending mail to Students
 while row:
 	randword=randPass.gen()
 	query=" update Accounts set passwd=SHA1('"+randword+"'),passwordMailed='1' where uname='"+row[0]+"'";
@@ -35,6 +37,32 @@ while row:
 	
 	handle.attach(MIMEText(message))
 	server.sendmail("gecgitrepository@gmail.com",row[3],handle.as_string())
+	message=""
 	print "Mail sent to "+row[3]
+	row = cursor.fetchone()
+query="select * from Guide where passwordMailed !='1'"
+cursor.execute(query)
+row=cursor.fetchone()
+#Sending mail to guides
+while row:
+	randword=randPass.gen()
+	query=" update Guide set password=SHA1('"+randword+"'),passwordMailed='1' where Project='"+row[0]+"'";
+	updateCursor.execute(query)
+	handle["To"]=row[3]
+	message=''' This is a computer generated Email.Please note That reply to this address may not be monitered
+               You have received this mail  as you have requested for confirmation code  of GEC GitRepository.
+
+	       Here are your account details:
+	       Username          : ''' + row[0] +'''
+	       Confirmation Code : ''' + randword + ''' 
+	        
+
+	       if you have no idea what is happening , please ignore this mail
+	       Some body might have entered your Mail Id by mistake. '''
+	
+	handle.attach(MIMEText(message))
+	server.sendmail("gecgitrepository@gmail.com",row[1],handle.as_string())
+	message=""
+	print "Mail sent to "+row[1]
 	row = cursor.fetchone()
 server.quit()

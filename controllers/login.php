@@ -5,8 +5,6 @@
 This script is the backend of the login.html page.The script in this page does all the login related actions like verify password,set session ID etc.
 ***********************************************************/
 $con=mysql_connect("localhost",'root','password');
-if(!$con)
-	echo "fail";
 mysql_select_db("GitRepo");
 /*Lines 14,15,16:Selects all columns from the Accounts table of the GitRepo database.The input obtained from the users are "escaped" so as to avoid SQL injection.The query is executed and the returned handle is stored in $reply.
 Note that only one row will be returned as result of the query as the uname is the primary key
@@ -40,7 +38,11 @@ else
 	}
 
 	$_SESSION['SessionID']=$SessionID;
+<<<<<<< HEAD
         $_SESSION['username']=$row['uname'];
+=======
+	$_SESSION['project']=$row['project'];
+>>>>>>> 95d871bb34a0a25b8abb4dc7847a2bb55cc76f12
 //defined session ID for current user's current session
 	$query="UPDATE Accounts SET sessionID=\"".$SessionID."\" where uname='$row[uname]'";
 //Saved generated Session ID to database so that it can be used as a key in other pages of the same session
