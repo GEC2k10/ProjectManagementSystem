@@ -37,12 +37,4 @@ while row:
 	server.sendmail("gecgitrepository@gmail.com",row[3],handle.as_string())
 	print "Mail sent to "+row[3]
 	row = cursor.fetchone()
-
 server.quit()
-
-
-
-
-
-
-
