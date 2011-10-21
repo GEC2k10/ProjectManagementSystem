@@ -32,24 +32,19 @@ homePage.php is the homepage of a current user.Contains the buttons to perform g
 <form method='post' action='logout.php' align='right'>
         <input type='submit' value='Logout'>
 </form>
-<<<<<<< HEAD
 <font size="6" color="white">Project name :<?php echo " ".$row['projectName']; ?></font><br><br>
 <form method='post' enctype="multipart/form-data" action='gitCommands/upload.php'>
 	<input type='file' name='file'>
 	<input type='submit' value='Upload'>
 </form>
-=======
 <font size="6">Project name :<?php echo " ".$row['projectName']; ?></font><br><br>
 <form method='post' action='gitCommands/add.php'>
         <input type='submit' value='git add .'>
->>>>>>> 95d871bb34a0a25b8abb4dc7847a2bb55cc76f12
 </form>
 </form>
 <form method='post' action='gitCommands/download.php'>
         <input type='submit' value='Download all files'>
 </form>
 </font> 
-<font><iframe src="./gitCommands/repos/2010441" width="100%" height="300"</font></iframe>
-
 </body>
 </html>
