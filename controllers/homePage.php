@@ -33,11 +33,8 @@ homePage.php is the homepage of a current user.Contains the buttons to perform g
         <input type='submit' value='Logout'>
 </form>
 <font size="6" color="white">Project name :<?php echo " ".$row['projectName']; ?></font><br><br>
-<form method='post' enctype="multipart/form-data" action='gitCommands/upload.php'>
-	<input type='file' name='file'>
-	<input type='submit' value='Upload'>
+<a href='../views/upload.php'><input type='submit' value='Upload a file'></a><br><br>
 </form>
-<font size="6">Project name :<?php echo " ".$row['projectName']; ?></font><br><br>
 <form method='post' action='gitCommands/add.php'>
         <input type='submit' value='git add .'>
 </form>

@@ -15,7 +15,7 @@ body
 <fieldset>
 <span style="color: white;">
 <input type='file' name='file'><br>
-Enter Absolute path of target:<br>
+Select target:<br>
 <?php
 	session_start();
 	exec("find /var/www/repos/$_SESSION[project]/  \( ! -regex '.*/\..*' \) -type d ",$out);
