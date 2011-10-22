@@ -6,6 +6,20 @@ body
 </style>
 </head>
 <title>Upload</title>
+<?php
+	
+	session_start();
+        $con=mysql_connect("localhost",'root','password');
+        mysql_select_db("GitRepo");
+        $query = "SELECT * FROM Accounts WHERE sessionID='".$_SESSION['SessionID']."'";
+//Selects row that matches sessionId of current session.The session ID was written into the database in the login page.
+        $reply=mysql_query($query,$con);
+        if(!mysql_num_rows($reply))
+        {
+//	prevent unautorized acess using homepage security
+		header("location:../controllers/homePage.php");
+        }
+?>
 <form method="post" action="../controllers/logout.php">
 <input type="submit" value="Logout">
 </form>
@@ -17,10 +31,12 @@ body
 <input type='file' name='file'><br>
 Select target:<br>
 <?php
-	session_start();
 	exec("find /var/www/repos/$_SESSION[project]/  \( ! -regex '.*/\..*' \) -type d ",$out);
 	foreach ($out as &$tmp)
-{		echo "<input type='radio' name='directory' value='$tmp'/>$tmp<br>";}
+	{
+		$sub=substr($tmp,15+strlen($_SESSION['project']));
+		echo "<input type='radio' name='directory' value='$tmp'/>$sub<br>";
+	}
 ?>
 <input type="submit" value="Upload" >
 </form>
