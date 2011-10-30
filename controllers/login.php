@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <html><body style="background-image: url(../views/images.png); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
 <br><br><br><br><center>
 <?php
@@ -21,9 +24,15 @@ if($row['uname']=="")
         header("Location:/lag/views/loginwrong.html");
 	exit;
 }
+else if($row["uname"]==$row["projectName"])
+{
+  $_SESSION["projectName"]=$row["projectName"];
+  header("Location:../views/guide.php");
+  exit;
+}
 else 
 {
-	session_start();
+	
 	$SessionID="";
 	for($i=0;$i<40;$i++)
 	{
