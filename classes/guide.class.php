@@ -3,10 +3,11 @@
 class Guide
 {
   private $_con,$_query,$_reply,$_rows;
-  private $_members,$_link,$_temp;
+  private $_members,$_link,$_temp,$_projectName;
 
   public function __construct($projname)
   {
+     $this->_projectName = $projname;
      $this->_con = mysql_connect("localhost","root","password");
      mysql_select_db("GitRepo",$this->_con);
      $this->_query = sprintf("select * from Accounts where projectName = '%s'",$projname);
@@ -25,6 +26,11 @@ class Guide
        echo $this->_link;
      }
   }
-
+ public function show_commit_button()
+ {
+    echo "<form action='../controllers/gitCommands/commit.php?projectName=".$this->_projectName."' method='post'>"."<br/>";
+    echo "<input type='submit' value='Commit All'>"."<br/>";
+    echo "</form>";
+ }
 };
-
+?>
