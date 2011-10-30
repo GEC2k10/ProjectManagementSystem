@@ -40,7 +40,7 @@ class Login
   {
     if( $this->is_guide())
     {
-        $SESSION['projectName']=$this->_projectName;
+        $_SESSION['projectName']=$this->_projectName;
 	header("Location:../views/guide.php");  
 	exit;
     }
