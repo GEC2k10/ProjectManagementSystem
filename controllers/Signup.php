@@ -15,7 +15,7 @@
 	}
 	if(ValidateEmail($_POST['email']))
 	{
-		$con = mysql_connect("localhost",'root','root');
+		$con = mysql_connect("localhost",'root','password');
 		mysql_select_db("GitRepo",$con);
 		$query="SELECT activation FROM Accounts WHERE uname='$_POST[idnum]'";
 		$reply=mysql_query($query,$con);
