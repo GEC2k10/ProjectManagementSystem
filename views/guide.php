@@ -3,6 +3,11 @@ session_start();
 ?>
 <html>
 <head></head>
+<style type="text/css">
+body {
+background-image:url('images.png');
+} 
+</style>
 <body bgcolor = "green">
 <script language="php">
 require_once("../classes/guide.class.php"); 

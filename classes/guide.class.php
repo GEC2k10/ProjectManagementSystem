@@ -16,7 +16,7 @@ class Guide
      {
        $this->_members[] = $this->_rows["uname"];
      }
-      $this->_temp="<a href =../views/showuser.php?uname='%s'> %s </a><br/> "; 
+      $this->_temp="<a href =../views/showusers.php?uname=%s> %s </a><br/> "; 
   }  
   public function show_members()
   {
