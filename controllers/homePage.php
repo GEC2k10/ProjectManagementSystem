@@ -35,10 +35,6 @@ homePage.php is the homepage of a current user.Contains the buttons to perform g
 <font size="6" color="white">Project name :<?php echo " ".$row['projectName']; ?></font><br><br>
 <a href='../views/upload.php'><input type='submit' value='Upload a file'></a><br><br>
 </form>
-<form method='post' action='gitCommands/add.php'>
-        <input type='submit' value='git add .'>
-</form>
-</form>
 <form method='post' action='gitCommands/download.php'>
         <input type='submit' value='Download all files'>
 </form>
