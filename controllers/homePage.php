@@ -1,4 +1,7 @@
 <html>
+<head>
+     <link rel="shortcut icon" href="../views/home.png">
+</head>
 <?php
 /****************************************************************************************
 homePage.php is the homepage of a current user.Contains the buttons to perform git actions.

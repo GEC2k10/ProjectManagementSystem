@@ -7,8 +7,9 @@ body
 </head>
 <title>Upload</title>
 <?php
-	
 	session_start();
+	echo $_SESSION['message'];
+	$_SESSION['message']='';
         $con=mysql_connect("localhost",'root','password');
         mysql_select_db("GitRepo");
         $query = "SELECT * FROM Accounts WHERE sessionID='".$_SESSION['SessionID']."'";
@@ -20,9 +21,8 @@ body
 		header("location:../controllers/homePage.php");
         }
 ?>
-<form method="post" action="../controllers/logout.php">
-<input type="submit" value="Logout">
-</form>
+<h6 align="right"><a href="../controllers/logout.php"><input type="submit" value="Logout"></a><br><br>
+<a href="../controllers/homePage.php"><input type="submit" value="Home"></a></h6>
 <br><br><br><body style="background-image: url(images.png); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
 <h1><span style="color: white;">Upload a file</h1>
 <form action="../controllers/gitCommands/upload.php" method="post" enctype="multipart/form-data">
