@@ -24,24 +24,24 @@ body
 <h6 align="right"><a href="../controllers/logout.php"><input type="submit" value="Logout"></a><br><br>
 <a href="../controllers/homePage.php"><input type="submit" value="Home"></a></h6>
 <br><br><br><body style="background-image: url(images.png); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
-<h1><span style="color: white;">Upload a file</h1>
-<form action="../controllers/gitCommands/upload.php" method="post" enctype="multipart/form-data">
+<h1><span style="color: white;">New Directory</h1>
+<form action="../controllers/mkdir.php" method="post" >
 <fieldset>
 <span style="color: white;">
-<input type='file' name='file'><br>
+Enter Directory name:<input type="text" name="dirName"><br>
 Select target:<br>
 <?php
 	exec("find /var/www/repos/$_SESSION[project]/  \( ! -regex '.*/\..*' \) -type d ",$out);
 	foreach ($out as &$tmp)
 	{
 		$sub=substr($tmp,15+strlen($_SESSION['project']));
-		if(strcmp($tmp,$out[0])==0)
+		if(strcmp($out[0],$tmp)==0)
 			echo "<input type='radio' name='directory' value='$tmp' CHECKED/>$sub<br>";
 		else
 			echo "<input type='radio' name='directory' value='$tmp'/>$sub<br>";
 	}
 ?>
-<input type="submit" value="Upload" >
+<input type="submit" value="Create Directory" >
 </form>
 </body>
 </html>

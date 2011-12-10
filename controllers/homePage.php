@@ -41,6 +41,9 @@ homePage.php is the homepage of a current user.Contains the buttons to perform g
 <form method='post' action='gitCommands/download.php'>
         <input type='submit' value='Download all files'>
 </form>
+<form method='post' action='../views/mkdir.php'>
+        <input type='submit' value='New Directory'>
+</form>
 </font> 
 </body>
 </html>
