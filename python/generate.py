@@ -1,3 +1,4 @@
+#This script will collect the details of students and guide.This is the script that has to be run for the first time.This script creates two files, datauser.txt and dataguide.txt. The details collected can be verified in that files. It is from the above files that the the database is loaded by the script UpdateDb.py. 
 import MySQLdb
 import os
 import randPass
