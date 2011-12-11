@@ -1,11 +1,13 @@
 <html>
 <head>
+<link rel="shortcut icon" href="icons/mkdirIcon.png">
 <style type="css/text">
 body
 {margin-left:1000px;}
 </style>
+<h1><center><span style="color: white;display:inline;">New Directory</center></h1>
 </head>
-<title>Upload</title>
+<title>Create Directory</title>
 <?php
 	session_start();
 	echo $_SESSION['message'];
@@ -21,10 +23,9 @@ body
 		header("location:../controllers/homePage.php");
         }
 ?>
-<h6 align="right"><a href="../controllers/logout.php"><input type="submit" value="Logout"></a><br><br>
+<h6 align="right"><a href="../controllers/logout.php"><input type="submit" style="design:inline" value="Logout"></a>
 <a href="../controllers/homePage.php"><input type="submit" value="Home"></a></h6>
 <br><br><br><body style="background-image: url(images.png); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
-<h1><span style="color: white;">New Directory</h1>
 <form action="../controllers/mkdir.php" method="post" >
 <fieldset>
 <span style="color: white;">

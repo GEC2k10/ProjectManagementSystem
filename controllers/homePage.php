@@ -10,7 +10,8 @@ session_start();
 $con=mysql_connect("localhost",'root','password');
 mysql_select_db("GitRepo");
 $query = "SELECT * FROM Accounts WHERE sessionID='".$_SESSION['SessionID']."'";
-//Selects row that matches sessionId of current session.The session ID was written into the database in the login page.
+//Selects row that matches sessionId of current session.The session ID was written into the database in the
+//login page.
 $reply=mysql_query($query,$con);
 if (mysql_num_rows($reply)==0)
 {
@@ -25,7 +26,8 @@ echo "<title>Homepage of ".$row['uname']."</title>";
 $_SESSION['project']=$row['projectName'];
 if($row['activationStatus']=='0')
 header("location:../views/activate.html");
-//This may seem to be pointless here as it is a repeatation of script in login page.But this is necessary to avoid the user from acessing the homepage by bypassing the activation process
+//This may seem to be pointless here as it is a repeatation of script in login page.But this is necessary to
+//avoid the user from acessing the homepage by bypassing the activation process
 mysql_close($con);
 ?>
 <?php echo $_SESSION['message'];$_SESSION['message']=''; ?>
@@ -41,7 +43,6 @@ mysql_close($con);
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <form method='post' action='gitCommands/download.php' style="display:inline">
 <input type='image' src='../views/icons/download.png' value='Download all files'>
-
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </form>
 <form method='post' action='../views/mkdir.php' style="display:inline">

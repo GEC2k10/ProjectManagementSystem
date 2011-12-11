@@ -1,5 +1,6 @@
 <html>
 <head>
+<link rel="shortcut icon" href="icons/UpIcon.png">
 <style type="css/text">
 body
 {margin-left:1000px;}
@@ -21,8 +22,8 @@ body
 		header("location:../controllers/homePage.php");
         }
 ?>
-<h6 align="right"><a href="../controllers/logout.php"><input type="submit" value="Logout"></a><br><br>
-<a href="../controllers/homePage.php"><input type="submit" value="Home"></a></h6>
+<h6 align="right"><a href="../controllers/logout.php"><input type="submit" value="Logout" style="display:inline"></a>
+<a href="../controllers/homePage.php"><input type="submit" value="Home" style="display:inline"></a></h6>
 <br><br><br><body style="background-image: url(images.png); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
 <h1><span style="color: white;">Upload a file</h1>
 <form action="../controllers/gitCommands/upload.php" method="post" enctype="multipart/form-data">
