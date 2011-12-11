@@ -1,6 +1,6 @@
 <html>
 <head>
-<link rel="shortcut icon" href="../views/home.png">
+<link rel="shortcut icon" href="../views/icons/home.png">
 </head>
 <?php
 /****************************************************************************************
