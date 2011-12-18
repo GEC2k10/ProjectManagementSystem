@@ -25,7 +25,12 @@ body
 <h6 align="right"><a href="../controllers/logout.php"><input type="submit" value="Logout" style="display:inline"></a>
 <a href="../controllers/homePage.php"><input type="submit" value="Home" style="display:inline"></a></h6>
 <br><br><br><body style="background-image: url(images.png); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
-<h1><span style="color: white;">Upload a file</h1>
+<h1><center><span style="color: white;">Upload a file</h1></center>
+<form method='post' action='mkdir.php' style="display:inline">
+<input type='image' src='icons/mkdir2.png' value='New Directory'>
+</form>
+<br>
+<font face='Ubuntu' size='5' color='white'>Create a new directory</font>
 <form action="../controllers/gitCommands/upload.php" method="post" enctype="multipart/form-data">
 <fieldset>
 <span style="color: white;">
