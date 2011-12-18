@@ -29,7 +29,7 @@ body
 <form action="../controllers/gitCommands/upload.php" method="post" enctype="multipart/form-data">
 <fieldset>
 <span style="color: white;">
-<input type='file' name='file'><br>
+<input type='file' name='file[]' multiple><br>
 Select target:<br>
 <?php
 	exec("find /var/www/repos/$_SESSION[project]/  \( ! -regex '.*/\..*' \) -type d ",$out);
