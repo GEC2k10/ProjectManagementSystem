@@ -4,6 +4,8 @@
 	session_start();
 	$_SESSION['message']=' ';
 	$target=$_POST['directory'];
+	if($target[strlen($target)-1]!='/')
+		$target=$target.'/';
 	$count=0;
 	foreach ($_FILES['file']['name'] as $filename) 
 	{
@@ -13,9 +15,7 @@
 		$temp=$temp.basename($filename);
 		echo $temp;
 		if(move_uploaded_file($tmp,$temp))
-			$_SESSION['message']="Successfully uploaded file".$filename;
-		else
-			echo "failed";
+			$_SESSION['message']="Successfully uploaded file all files";
 		$temp='';
 		$tmp='';
 	}
