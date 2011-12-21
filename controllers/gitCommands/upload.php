@@ -14,10 +14,11 @@
 		$count=$count + 1;
 		$temp=$temp.basename($filename);
 		echo $temp;
-		move_uploaded_file($tmp,$temp)
+		move_uploaded_file($tmp,$temp);
 		$temp='';
 		$tmp='';
 	}
+	$_SESSION['message']="done";
 	header("location:../../views/upload.php");
 ?>
 </html>
