@@ -14,8 +14,7 @@
 		$count=$count + 1;
 		$temp=$temp.basename($filename);
 		echo $temp;
-		if(move_uploaded_file($tmp,$temp))
-			$_SESSION['message']="Successfully uploaded file all files";
+		move_uploaded_file($tmp,$temp)
 		$temp='';
 		$tmp='';
 	}

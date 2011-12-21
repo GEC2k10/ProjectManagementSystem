@@ -41,24 +41,12 @@ class Login
     if( $this->is_guide())
     {
         $SESSION['projectName']=$this->_projectName;
-	header("Location:../views/guide.php");  
-	exit;
+		header("Location:../views/guide.php");  
+		exit;
     }
     else if($this->is_user())
     {
-      
-           $SessionID="";           //  ?session   
-	for($i=0;$i<40;$i++)
-	{
-	      
-		$j=rand(0,2);
-		if($j==0)
-			$SessionID.=chr(rand(65,90));
-		else if($j==1)
-			$SessionID.=chr(rand(97,122));
-		else 
-			$SessionID.=chr(rand(48,57));
-	}
+        $SessionID=sha1(date("D M j G:i:s T Y"));           //  ?session   
         $this->_sessionID = $SessionID;
         $_SESSION['SessionID']=$SessionID;
         $_SESSION['username']=$this->_uname;

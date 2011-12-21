@@ -26,10 +26,15 @@ class Guide
        echo $this->_link;
      }
   }
+
  public function show_commit_button()
  {
-    echo "<form action='../controllers/gitCommands/commit.php?projectName=".$this->_projectName."' method='post'>"."<br/>";
-    echo "<input type='submit' value='Commit All'>"."<br/>";
+    echo "<form action='../controllers/gitCommands/commit.php' method='post'><br/>";
+	echo "Enter Commit message: <br><br>";
+	echo "<input type='hidden' value='$this->_projectName' name='projectName'>";
+	echo "<textarea name='commitMessage' rows=10 cols=40>";
+	echo "Commit message:Please comment about the current status of the project.</textarea><br><br>";
+    echo "<input type='submit' value='Commit All'><br/><br>";
     echo "</form>";
  }
 };
