@@ -2,14 +2,45 @@
 session_start();
 ?>
 <html>
-<head></head>
+<head>
+	<style type="text/css" >
+		.members {
+			border:3px solid black;
+			width:100px;
+			background-color:#cc66ff;	
+			height:350px;	
+}
+	a {
+		display:block;
+	}
+	a:hover {
+		color:red;
+	}
+
+	.commit {
+		border:3px solid black;
+		width:400px;
+		height:340px;
+		background-color:#ff6699;
+		margin-left:200px;
+		margin-top:-350px;
+	}	
+
+</style>
+
+</head>
 <style type="text/css">
 body {
-background-image:url('images.png');
+	/*background-image:url('images.png');*/
+	background-color:#ccccff;
 } 
 </style>
 <body bgcolor = "green">
 <script language="php">
+if (!isset($_SESSION['projectName']) ) {   //prevents the back login problem after logout
+header("Location:../views/login.html");
+}
+
 require_once("../classes/guide.class.php"); 
 echo "<font color=red><h1 align=center>Guides Home Page</h1></font>";
 echo "<a href='../controllers/logout.php'><h3 align='right'><input type='submit' value='Logout'></h3></a>";
