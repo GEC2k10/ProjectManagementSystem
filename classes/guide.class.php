@@ -20,22 +20,27 @@ class Guide
   }  
   public function show_members()
   {
+     
+     echo "<div class='members'>";
      while(list($index,$member) = each($this->_members))
      {
        $this->_link = sprintf($this->_temp,$member,$member);
        echo $this->_link;
      }
-  }
+     echo "</div>";  
+}
 
  public function show_commit_button()
  {
-    echo "<form action='../controllers/gitCommands/commit.php' method='post'><br/>";
-	echo "Enter Commit message: <br><br>";
+   	echo "<div class='commit'>";
+	echo "<form action='../controllers/gitCommands/commit.php' method='post'><br/>";
+	echo "<center>Enter Commit message:</center> <br><br>";
 	echo "<input type='hidden' value='$this->_projectName' name='projectName'>";
-	echo "<textarea name='commitMessage' rows=10 cols=40>";
-	echo "Commit message:Please comment about the current status of the project.</textarea><br><br>";
-    echo "<input type='submit' value='Commit All'><br/><br>";
-    echo "</form>";
- }
+	echo "<center><textarea name='commitMessage' rows=10 cols=40>";
+	echo "Commit message:Please comment about the current status of the project.</textarea></center><br><br>";
+        echo "<center><input type='submit' value='Commit All'></center><br/><br>";
+        echo "</form>";
+        echo"</div>";
+}
 };
 ?>
