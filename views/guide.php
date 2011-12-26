@@ -31,7 +31,7 @@ session_start();
 </head>
 <style type="text/css">
 body {
-	/*background-image:url('images.png');*/
+	background-image:url('images.png');
 	background-color:#ccccff;
 } 
 </style>

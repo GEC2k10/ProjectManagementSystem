@@ -24,10 +24,6 @@ exit;
 $row=mysql_fetch_assoc($reply);
 echo "<title>Homepage of ".$row['uname']."</title>";
 $_SESSION['project']=$row['projectName'];
-if($row['activationStatus']=='0')
-header("location:../views/activate.html");
-//This may seem to be pointless here as it is a repeatation of script in login page.But this is necessary to
-//avoid the user from acessing the homepage by bypassing the activation process
 mysql_close($con);
 ?>
 <?php echo $_SESSION['message'];$_SESSION['message']=''; ?>

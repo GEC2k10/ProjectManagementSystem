@@ -55,11 +55,7 @@ class Login
 	$query="UPDATE Accounts SET sessionID=\"".$SessionID."\" where uname='$this->_uname'";
         
 	mysql_query($query,$this->_con);
-	
-	if($this->_row['activationStatus']=='0')
-		header("Location:../views/activate.html");
-	else
-		header("Location:homePage.php");
+	header("Location:homePage.php");
     }
     else {}
    }  

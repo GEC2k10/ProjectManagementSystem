@@ -46,25 +46,12 @@ class Login
     }
     else if($this->is_user())
     {
-      
-           $SessionID="";           //  ?session   
-	for($i=0;$i<40;$i++)
-	{
-	      
-		$j=rand(0,2);
-		if($j==0)
-			$SessionID.=chr(rand(65,90));
-		else if($j==1)
-			$SessionID.=chr(rand(97,122));
-		else 
-			$SessionID.=chr(rand(48,57));
-	}
-        $this->_sessionID = $SessionID;
-        $_SESSION['SessionID']=$SessionID;
+        $this->_sessionID = sha1(date("D M j G:i:s T Y"));
+        $_SESSION['SessionID']=$this->_sessionID;
         $_SESSION['username']=$this->_uname;
 	$_SESSION['project']=$this->_projectName;
        
-	$query="UPDATE Accounts SET sessionID=\"".$SessionID."\" where uname='$this->_uname'";
+	$query="UPDATE Accounts SET sessionID=\"".$this->_sessionID."\" where uname='$this->_uname'";
         
 	mysql_query($query,$this->_con);
 	

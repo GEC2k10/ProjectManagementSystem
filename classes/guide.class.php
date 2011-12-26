@@ -37,10 +37,10 @@ class Guide
 	echo "<center>Enter Commit message:</center> <br><br>";
 	echo "<input type='hidden' value='$this->_projectName' name='projectName'>";
 	echo "<center><textarea name='commitMessage' rows=10 cols=40>";
-	echo "Commit message:Please comment about the current status of the project.</textarea></center><br><br>";
-        echo "<center><input type='submit' value='Commit All'></center><br/><br>";
-        echo "</form>";
-        echo"</div>";
-}
+	echo "Commit time :".date("D M j G:i:s T Y")."</textarea></center><br><br>";
+    echo "<center><input type='submit' value='Commit All'></center><br/><br>";
+    echo "</form>";
+    echo"</div>";
+  }
 };
 ?>
