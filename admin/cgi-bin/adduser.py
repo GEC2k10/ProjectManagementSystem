@@ -11,11 +11,13 @@ def displayForm():
 		indexedInputTags+=inputTags%(i+1,i,i,i)
 	form='''
 	<html>
+	<title>Add new users</title>
 	<body bgcolor=#efefef style=font-family:ubuntu>
 	<h1>Add new users.</h1>
 	Username%sProject name%sEmail ID
 	<form action=add.py method=post>
 	%s
+	Email password :<input type=password name=password><br>
 	%s<input type=submit value='Add users' style=height:50px>
 	</form>
 	</body>
@@ -23,6 +25,3 @@ def displayForm():
 	print "Content-type: text/html\n\n"
 	print form
 displayForm()
-
-
-		
