@@ -11,8 +11,6 @@ target='/var/www/lag/repos/';
 sessionID=randPass.gen()
 for i in range(0,n):
 	admno=raw_input("Enter admission number of user "+str(i+1)+" ")
-	query=("CREATE TABLE user"+admno+" ( Contribution varchar(40), DateandTime varchar(40),Commitsha varchar(40) primary key )")
-	cursor.execute(query);
 	project=raw_input("Enter project name of user "+str(i+1)+" ")
 	if project not in projectList:
 		projectList+=project+" "
