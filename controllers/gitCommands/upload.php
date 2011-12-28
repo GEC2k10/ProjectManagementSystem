@@ -17,7 +17,7 @@
 		move_uploaded_file($tmp,$temp);
 		$temp='';
 		$tmp='';
-		$query="INSERT INTO user".$_SESSION['user_name']." VALUE(\"".$filename."\",CURDATE())";
+                $query="INSERT INTO Contributions VALUE(\"".$_SESSION['user_name']."\",\"".$filename."\",CURDATE())";
                 $reply=mysql_query($query,$con);
 	}
 	$_SESSION['message']="done";
