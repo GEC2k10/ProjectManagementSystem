@@ -7,7 +7,7 @@ cursor=db.cursor()
 projectList=''
 fp=open("datauser.txt","w")
 n=int(raw_input("Enter number of entries "))
-target='/var/www/lag/controllers/gitCommands/repos/';
+target='/var/www/lag/repos/';
 sessionID=randPass.gen()
 for i in range(0,n):
 	admno=raw_input("Enter admission number of user "+str(i+1)+" ")
@@ -28,3 +28,5 @@ for i in projectList:
 	fp.write(data)
 	os.system("mkdir "+target+i) #Creating Directory for each project.
 fp.close()
+query=("CREATE TABLE Contributions ( Username varchar(30), Contribution varchar(40), Date varchar(40))") #Creating table for storing the contribution details of users 
+cursor.execute(query);
