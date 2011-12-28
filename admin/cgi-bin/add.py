@@ -28,7 +28,7 @@ class user:
 		return 1
 	def mkdir(self):
 		try :
-			os.mkdir('/var/www/repos/'+self.project,0000)
+			os.mkdir('/var/www/repos/'+self.project,0777)
 		except OSError:
 			return
 def getLogin(password):
