@@ -17,6 +17,7 @@ def displayForm():
 	Username%sProject name%sEmail ID
 	<form action=add.py method=post>
 	%s
+	Email Username :<input type=text value=gecgitrepository readonly><br>
 	Email password :<input type=password name=password><br>
 	%s<input type=submit value='Add users' style=height:50px>
 	</form>

@@ -11,8 +11,8 @@ This is a computer generated Email.Please note that replies to this address may 
 received this mail as you have registered in  GEC Project Tracker.
 
 Here are your account details:
-	Username          :		%s 
-	Confirmation Code :		%s 
+	Username	:		%s 
+	Password	:		%s 
 If you have no idea what is happening,please ignore this mail.Some body might have entered your Mail ID by
 mistake. 
 '''%(uname,passwd)
