@@ -31,6 +31,8 @@ class user:
 			os.mkdir('/var/www/repos/'+self.project,0777)
 		except OSError:
 			return
+		os.system('chmod 777 /var/www/repos/'+self.project)
+		return
 def getLogin(password):
 	server=smtplib.SMTP("smtp.gmail.com:587")
 	server.starttls()
