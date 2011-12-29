@@ -5,6 +5,7 @@ import randPass
 import smtplib
 import mail
 import os
+import commons
 class user:
 	uname=''
 	passwd=''
@@ -55,12 +56,5 @@ def getdata():
 		userObj.mail(server)
 		userObj.mkdir()
 	server.quit()
-def redirect():
-	print "Content-type: text/html\n\n"
-	print '''
-	<html>
-	<body onload="document.location='/'">
-	</html>
-	'''
 getdata()
-redirect()
+commons.redirect('/')
