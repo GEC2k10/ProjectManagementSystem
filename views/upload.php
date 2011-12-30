@@ -14,13 +14,15 @@ body
         $con=mysql_connect("localhost",'root','password');
         mysql_select_db("GitRepo");
         $query = "SELECT * FROM Accounts WHERE sessionID='".$_SESSION['SessionID']."'";
-//Selects row that matches sessionId of current session.The session ID was written into the database in the login page.
+//Selects row that matches sessionId of current session.The session ID was written into the database in the 
+//login page.
         $reply=mysql_query($query,$con);
         if(!mysql_num_rows($reply))
         {
-//	prevent unautorized acess using homepage security
+		//	prevent unautorized acess using homepage security
 		header("location:../controllers/homePage.php");
         }
+		mysql_close();
 ?>
 <h6 align="right"><a href="../controllers/logout.php"><input type="submit" value="Logout" style="display:inline"></a>
 <a href="../controllers/homePage.php"><input type="submit" value="Home" style="display:inline"></a></h6>
