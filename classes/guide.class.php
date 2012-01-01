@@ -30,11 +30,21 @@ class Guide
      }
      echo "</div>";  
 }
+  public function show_project()
+  {
+  	echo "<html>";
+  	echo "<h1 align=right><iframe src=/repos/$this->_projectName height=300px width=100%></iframe></h1>";
+	echo "</body>";
+  }
+
+ public function show_commits()
+ {
+ }
 
  public function show_commit_button()
  {
    	echo "<div class='commit'>";
-	echo "<form action='../controllers/gitCommands/commit.php' method='post'><br/>";
+	echo "<form action='../controllers/gitCommands/commit.php' method='post'>";
 	echo "<center>Enter Commit message:</center> <br><br>";
 	echo "<input type='hidden' value='$this->_projectName' name='projectName'>";
 	echo "<center><textarea name='commitMessage' rows=10 cols=40>";
