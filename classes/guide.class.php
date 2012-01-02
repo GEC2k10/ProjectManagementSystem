@@ -14,7 +14,8 @@ class Guide
      $this->_reply = mysql_query($this->_query,$this->_con);
      while($this->_rows = mysql_fetch_array($this->_reply))
      {
-	if( $this->_rows["uname"]!= $this->_rows["projectName"] ) //This avoids the guide from being listed as the member of the project himself/herself
+	if( $this->_rows["uname"]!= $this->_rows["projectName"] ) //This avoids the guide from being listed as
+	//the member of the project himself/herself
 	       $this->_members[] = $this->_rows["uname"];
      }
       $this->_temp="<a href =../views/showusers.php?uname=%s> %s </a><br/> "; 
