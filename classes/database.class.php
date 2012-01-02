@@ -1,11 +1,12 @@
 <?php
 	class Database
 	{
+		private $_con;
 
 		public function connect()
 		{
-			mysql_connect("localhost","root","password");
-			mysql_select_db("GitRepo");
+			$this->_con=mysql_connect("localhost","root","password");
+			mysql_select_db("GitRepo",$this->_con);
 		}
 
 		public function query($query)
