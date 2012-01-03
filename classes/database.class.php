@@ -12,10 +12,10 @@
 		public function query($query)
 		{
 			$reply=mysql_query($query);
-			if(mysql_num_rows($reply)==0)
-				return 0;
+			if(mysql_num_rows($reply)==0)		
+				return 0;			
 			else
-				return $reply;
+    			return $reply;
 		}
 
 		public function close()

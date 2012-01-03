@@ -6,12 +6,12 @@
  *  login.class.php
  */
 
-
 class Login
 {
   private $_con,$_query,$_reply,$_row;
   private $_uname,$_passwd,$_projectName;
   private $_sessionID;
+  require_once('../classes/databse.class.php');
   public function __construct($uname,$passwd)
   {
     $this->_con=mysql_connect("localhost","root","password");
