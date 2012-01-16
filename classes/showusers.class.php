@@ -28,6 +28,14 @@ class ShowUsers
       echo $this->_link."      ".$this->_dates[$i]."<br/>";
     }
   }
+  public function show_contributions()
+ {
+    $this->_con = mysql_connect("localhost","root","password");
+    mysql_select_db("GitRepo",$this->_con);
+    $this->_query=sprintf("SELECT * FROM Contributions WHERE username=%s",$this->_memberName;
+    $this->_reply=mysql_query($this->_query,$this->_con);
+ }
+	
   public function __destruct()
   {
     mysql_close($this->_con);

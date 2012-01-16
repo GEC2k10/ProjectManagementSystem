@@ -3,6 +3,8 @@
 <?php
 	session_start();
 	$_SESSION['message']=' ';
+	$con=mysql_connect("localhost","root","password");
+	mysql_select_db("GitRepo",$con);
 	$target=$_POST['directory'];
 	if($target[strlen($target)-1]!='/')
 		$target=$target.'/';
@@ -20,7 +22,7 @@
                 $query="INSERT INTO Contributions VALUE(\"".$_SESSION['user_name']."\",\"".$filename."\",CURDATE())";
                 $reply=mysql_query($query,$con);
 	}
-	$_SESSION['message']="done";
+	$_SESSION['message']=$reply;
 	header("location:../../views/upload.php");
 ?>
 </html>

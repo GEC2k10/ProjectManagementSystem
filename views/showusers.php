@@ -14,5 +14,3 @@ $user->show_files();
 ?>
 </body>
 </html>
-
-

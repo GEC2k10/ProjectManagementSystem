@@ -23,6 +23,7 @@ homePage.php is the homepage of a current user.Contains the buttons to perform g
 	$row=mysql_fetch_assoc($reply);
 	$con->close();
 	$_SESSION['project']=$row['projectName'];
+	$_SESSION['user_name']=$row[uname]; //Dont remove it
 	echo "<title>Homepage of $row[uname]</title>";
 	echo $_SESSION['message'];$_SESSION['message']=''; 
 	?>
