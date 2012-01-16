@@ -18,11 +18,13 @@ class Login
     mysql_select_db("GitRepo",$this->_con);
     $this->_uname=mysql_real_escape_string(trim(substr($uname,0,30)));
     $this->_passwd=sha1($passwd);
-    $this->_query=sprintf("SELECT * FROM Accounts WHERE uname='%s' AND passwd='%s'",$this->_uname,$this->_passwd);
+    $this->_query=sprintf("
+	SELECT uname,projectName FROM Accounts WHERE uname='%s' AND passwd='%s'",$this->_uname,$this->_passwd);
     $this->_reply=mysql_query($this->_query,$this->_con);
     $this->_row = mysql_fetch_assoc($this->_reply);
     if( $this->_row['uname']=="")
     { 
+       mysql_close($this->_con);
        header("Location:/lag/views/loginwrong.html");
        exit;
     }
@@ -34,38 +36,42 @@ class Login
   }
   private function is_user()  
   {
-    return ($this->_row['uname'] != "");
+    return ($this->_row['uname'] != "admin");
+  }
+  private function is_admin()  
+  {
+    return ($this->_row['uname'] == "admin");
   }
   public function Authenticate()
   {
     if( $this->is_guide())
     {
         $_SESSION['projectName']=$this->_projectName;
-	header("Location:../views/guide.php");  
-	exit;
+     	mysql_close($this->_con);
+		header("Location:../views/guide.php");  
+		exit;
     }
     else if($this->is_user())
     {
         $this->_sessionID = sha1(date("D M j G:i:s T Y"));
         $_SESSION['SessionID']=$this->_sessionID;
         $_SESSION['username']=$this->_uname;
-	$_SESSION['project']=$this->_projectName;
-       
-	$query="UPDATE Accounts SET sessionID=\"".$this->_sessionID."\" where uname='$this->_uname'";
-        
-	mysql_query($query,$this->_con);
-	
-	if($this->_row['activationStatus']=='0')
-		header("Location:../views/activate.html");
-	else
+		$_SESSION['project']=$this->_projectName;
+		$query="UPDATE Accounts SET sessionID='$this->_sessionID' where uname='$this->_uname'";
+		mysql_query($query,$this->_con);
+      	mysql_close($this->_con);
 		header("Location:homePage.php");
     }
-    else {}
+    else if($this->is_admin()) 
+	{
+        $this->_sessionID = sha1(date("D M j G:i:s T Y"));
+        $_SESSION['SessionID']=$this->_sessionID;
+		$query="UPDATE Accounts SET sessionID='$this->_sessionID' where uname='$this->_uname'";
+		mysql_query($query,$this->_con);
+	    mysql_close($this->_con);
+		header("Location:/lag/admin/adminHome.php");
+	}
    }  
-   public function __destruct()
-   {
-      mysql_close($this->_con);
-   }
 };
 
 
