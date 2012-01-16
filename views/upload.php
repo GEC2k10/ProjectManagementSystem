@@ -29,7 +29,7 @@ body
 <br><br><br><body style="background-image: url(images.png); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
 <h1><center><span style="color: white;">Upload a file</h1></center>
 <form method='post' action='mkdir.php' style="display:inline">
-<input type='image' src='icons/mkdir2.png' value='New Directory'>
+<input type='image' src='icons/mkdir.png' value='New Directory'>
 </form>
 <br>
 <font face='Ubuntu' size='5' color='white'>Create a new directory</font>
