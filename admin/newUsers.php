@@ -17,7 +17,7 @@
 	<h4 align=right><a href=../controllers/logout.php>Logout</a></h4>
 	<h1 align=center>Add New Users</h1>
 	<body bgcolor=#cfcfcf style='font-family:ubuntu'>
-	<form action=python/add.py method=post>
+	<form action=controllers/add.py method=post>
 	".str_repeat("&nbsp",10);
 
 	echo "Username".str_repeat("&nbsp;",35);

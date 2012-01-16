@@ -13,15 +13,14 @@
 	$con->close();
 	$page="
 	<html>
-	<title>Administrator Page</title>
+	<title>Recover Lost Password</title>
 	<h4 align=right><a href=../controllers/logout.php>Logout</a></h4>
 	<body bgcolor=#cfcfcf style='font-family:ubuntu'>
-	<center><h1>Welcome to Administrator page</h1></center>
-	<h2>Administrative tasks</h2>
-	<h3>
-	1.<a href='newUsers.php'>Add new users</a><br>
-	2.<a href='recoverPassword.php'>Recover lost password</a>
-	</h3>
+	<center><h1>Recover Lost Password</h1></center>
+	<form action=controllers/reset.php method=post>
+	Username <input type=text name=uname><br><br>
+	Password <input type=password name=passwd><br><br>
+	<input type=submit value='Reset Password'>
 	</body>
 	</html>";
 	echo $page;
