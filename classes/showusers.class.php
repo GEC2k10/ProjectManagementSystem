@@ -9,12 +9,12 @@ class ShowUsers
     $this->_memberName = $member;
     $this->_con = mysql_connect("localhost","root","password");
     mysql_select_db("GitRepo",$this->_con);
-    $this->_query=sprintf("SELECT * FROM Contributions WHERE username=%s",$this->_memberName);
+    $this->_query=sprintf("SELECT DISTINCT Contribution,Date FROM Contributions WHERE username=%s",$this->_memberName);
     $this->_reply = mysql_query($this->_query,$this->_con);
     
    while($this->_rows = mysql_fetch_array($this->_reply))
     {
-	$this->_files[] = substr($this->_rows['Contribution'],15) ;  /* File name field of user table */  
+	$this->_files[] = substr($this->_rows['Contribution'],15);  /* File name field of user table */  
 	$this->_dates[] = $this->_rows['Date'];       /* Date field */
      }  
     $this->_temp ="<a href='../views/showfile.php?filename=%s'><font color='white'>%s</font></a>";
@@ -23,7 +23,7 @@ class ShowUsers
   {
     $i=0;
     echo "<table border=\"1\">";
-    echo "<tr><th>File </th><th>Date of Contrubution</th></tr>";
+    echo "<tr><th>File </th><th>Date of Contribution</th></tr>";
     while(list($index,$file) = each($this->_files))
     {
         echo"<tr>";
