@@ -15,14 +15,13 @@
 		$tmp=$_FILES['file']['tmp_name'][$count];
 		$count=$count + 1;
 		$temp=$temp.basename($filename);
-		echo $temp;
-		move_uploaded_file($tmp,$temp);
+		$rply=move_uploaded_file($tmp,$temp);
+		$_SESSION['message']=$rply;
+                $query="INSERT INTO Contributions VALUE(\"".$_SESSION['user_name']."\",\"".$temp."\",CURDATE())";
+                $reply=mysql_query($query,$con);
 		$temp='';
 		$tmp='';
-                $query="INSERT INTO Contributions VALUE(\"".$_SESSION['user_name']."\",\"".$filename."\",CURDATE())";
-                $reply=mysql_query($query,$con);
 	}
-	$_SESSION['message']=$reply;
 	header("location:../../views/upload.php");
 ?>
 </html>
