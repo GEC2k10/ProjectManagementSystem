@@ -2,27 +2,23 @@
 
 class Guide
 {
-  private $_con,$_query,$_reply,$_rows;
+  private $_con,$_reply,$_rows;
   private $_members,$_link,$_temp,$_projectName;
 
   public function __construct($projname)
   {
      $this->_projectName = $projname;
-     $this->_con = mysql_connect("localhost","root","password");
-     mysql_select_db("GitRepo",$this->_con);
-     $this->_query = sprintf("select * from Accounts where projectName = '%s'",$projname);
-     $this->_reply = mysql_query($this->_query,$this->_con);
+	 require_once("database.class.php");
+	 $this->_con=new Database;
+     $this->_reply=$this->_con->query(sprintf("
+	 SELECT uname FROM Accounts WHERE projectName = '%s'",$projname));
      while($this->_rows = mysql_fetch_array($this->_reply))
-     {
-	if( $this->_rows["uname"]!= $this->_rows["projectName"] ) //This avoids the guide from being listed as
-	//the member of the project himself/herself
+		if( $this->_rows["uname"]!= $projname)
 	       $this->_members[] = $this->_rows["uname"];
-     }
       $this->_temp="<a href =../views/showusers.php?uname=%s> %s </a><br/> "; 
   }  
   public function show_members()
   {
-     
      echo "<div class='members'>";
      while(list($index,$member) = each($this->_members))
      {
@@ -31,15 +27,20 @@ class Guide
      }
      echo "</div>";  
 }
-  public function show_project()
-  {
-  	echo "<html>";
-  	echo "<h1 align=right><iframe src=/repos/$this->_projectName height=300px width=100%></iframe></h1>";
-	echo "</body>";
-  }
-
  public function show_commits()
  {
+ 	$this->_reply=$this->_con->query("
+	SELECT Contribution FROM Contributions WHERE Username='$this->_projectName'");
+	while($this->_row=mysql_fetch_array($this->_reply)
+	{
+		echo "
+		<div class=contri>
+			";
+	}
+}
+
+
+ 	
  }
 
  public function show_commit_button()

@@ -3,7 +3,7 @@
 	{
 		private $_con;
 
-		public function connect()
+  		public function __construct()
 		{
 			$this->_con=mysql_connect("localhost","root","password");
 			mysql_select_db("GitRepo",$this->_con);

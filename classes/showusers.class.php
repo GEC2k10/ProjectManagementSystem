@@ -7,17 +7,17 @@ class ShowUsers
   public function __construct($member)
   {
     $this->_memberName = $member;
-    $this->_con = mysql_connect("localhost","root","password");
-    mysql_select_db("GitRepo",$this->_con);
-    $this->_query=sprintf("SELECT DISTINCT Contribution,Date FROM Contributions WHERE username=%s",$this->_memberName);
-    $this->_reply = mysql_query($this->_query,$this->_con);
-    
+	require_once("database.class.php");
+    $this->_con = new Database;
+    $this->_reply=$this->_con->query(sprintf("
+	SELECT DISTINCT Contribution,Date FROM Contributions WHERE Username='%s'",$this->_memberName));
+	$this->_con->close();
    while($this->_rows = mysql_fetch_array($this->_reply))
     {
 	$this->_files[] = substr($this->_rows['Contribution'],15);  /* File name field of user table */  
 	$this->_dates[] = $this->_rows['Date'];       /* Date field */
      }  
-    $this->_temp ="<a href='../views/showfile.php?filename=%s'><font color='white'>%s</font></a>";
+    $this->_temp ="<a href='../views/showfile.php?filename=%s'>%s</a>";
   }  
  public function show_files()
   {

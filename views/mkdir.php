@@ -5,7 +5,7 @@
 body
 {margin-left:1000px;}
 </style>
-<h1><center><span style="color: white;display:inline;">New Directory</center></h1>
+<h1><center><span style="display:inline;">New Directory</center></h1>
 </head>
 <title>Create Directory</title>
 <?php
@@ -25,10 +25,9 @@ body
 ?>
 <h6 align="right"><a href="../controllers/logout.php"><input type="submit" style="design:inline" value="Logout"></a>
 <a href="../controllers/homePage.php"><input type="submit" value="Home"></a></h6>
-<br><br><br><body style="background-image: url(images.png); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+<br><br><br><body bgcolor=#cfcfcf alink="#ee0000" link="#0000ee" vlink="#551a8b">
 <form action="../controllers/mkdir.php" method="post" >
 <fieldset>
-<span style="color: white;">
 Enter Directory name:<input type="text" name="dirName"><br>
 Select target:<br>
 <?php

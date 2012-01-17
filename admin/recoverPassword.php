@@ -2,7 +2,6 @@
 	session_start();
 	require_once("../classes/database.class.php");
 	$con=new Database;
-	$con->connect();
 	if ($con->query("SELECT uname FROM Accounts WHERE sessionID='$_SESSION[SessionID]'")==0)
 	{
 		$con->close();

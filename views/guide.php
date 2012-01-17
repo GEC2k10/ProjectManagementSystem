@@ -8,7 +8,7 @@ session_start();
 		{
 			border:3px solid black;
 			width:100px;
-			background-color:#cc66ff;	
+			background-color:#afafaf;	
 			height:350px;
 		}
 	a
@@ -25,7 +25,7 @@ session_start();
 		border:3px solid black;
 		width:400px;
 		height:340px;
-		background-color:#ff6699;
+		background-color:#afafaf;
 		margin-left:200px;
 		margin-top:-350px;
 	}	
@@ -52,6 +52,6 @@ echo "<h3 align = left > Project Contributers <h3>";
 $guide = new Guide($_SESSION["projectName"]);
 $guide->show_members();
 $guide->show_commit_button();
-$guide->show_project();
+#$guide->show_commits();
 </script>
 </html>
