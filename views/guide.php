@@ -4,20 +4,24 @@ session_start();
 <html>
 <head>
 	<style type="text/css" >
-		.members {
+		.members
+		{
 			border:3px solid black;
 			width:100px;
 			background-color:#cc66ff;	
-			height:350px;	
-}
-	a {
+			height:350px;
+		}
+	a
+	{
 		display:block;
-	}
-	a:hover {
+    }
+	a:hover
+	{
 		color:red;
 	}
 
-	.commit {
+	.commit
+	{
 		border:3px solid black;
 		width:400px;
 		height:340px;

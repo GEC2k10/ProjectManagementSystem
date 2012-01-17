@@ -21,7 +21,6 @@ homePage.php is the homepage of a current user.Contains the buttons to perform g
 		exit;
 	}
 	$row=mysql_fetch_assoc($reply);
-	$con->close();
 	$_SESSION['project']=$row['projectName'];
 	$_SESSION['user_name']=$row['uname']; //Dont remove it
 	echo "<title>Homepage of $row[uname]</title>";
@@ -59,12 +58,21 @@ homePage.php is the homepage of a current user.Contains the buttons to perform g
 		Download
 	</div>
 	</font>
-	<div style='top:150px;right:300px;position:absolute'>
+	<div style='top:150px;right:300px;position:absolute;border:3px solid #888;font-size:18px'>
+		<u>Recent Contibutions</u><br><br>
+		<i>
 		<?php
-			$con->query("SELECT Contributions FROM Contributions WHERE uname=$row[uname]");
+			$reply=$con->query("SELECT DISTINCT Contribution FROM Contributions WHERE Username=$row[uname] ORDER BY Date DESC LIMIT 10");
+			while($row=mysql_fetch_assoc($reply))
+			{
+				$file=substr($row['Contribution'],15);
+    			echo "
+				<a href=../views/showfile.php?filename=$file>";
+				echo substr($row['Contribution'],16+strlen($_SESSION['project']))."<br></a>";
+			}
+			$con->close();
 		?>
-			
-		Contibutions<br>
+		</i>
 	</div>
 	<div style='bottom:0px;position:absolute'>
 	<h6>Copyright(c).All Rights Reserved.GEC TCR LAG 2010-2014</h6></div>
