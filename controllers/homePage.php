@@ -15,7 +15,7 @@ homePage.php is the homepage of a current user.Contains the buttons to perform g
 	{
 //User not logged in and tries to access hompepage.php by typing in the url
 		echo '
-		<body style="background-image: url(../views/images.png)">
+		<body bgcolor=#cfcfcf">
 		<h3>You are not logged in..Please Login...</h3>
 		<br><a href=../views/login.html><input type=submit value=Login></a>';
 		exit;
@@ -23,41 +23,50 @@ homePage.php is the homepage of a current user.Contains the buttons to perform g
 	$row=mysql_fetch_assoc($reply);
 	$con->close();
 	$_SESSION['project']=$row['projectName'];
-	$_SESSION['user_name']=$row[uname]; //Dont remove it
+	$_SESSION['user_name']=$row['uname']; //Dont remove it
 	echo "<title>Homepage of $row[uname]</title>";
 	echo $_SESSION['message'];$_SESSION['message']=''; 
 	?>
-	<body style="background-image: url(../views/images.png);">
+	<body bgcolor=#cfcfcf>
 		<font face='Ubuntu'>
 			<h1>
 				<center>
-					<font color=white> 
 						Welcome <?php echo $row['uname'];?>
-					</font>
 				</center>
 			</h1>
 			<form method='post' action='logout.php' align='right'>
 				<input type='submit' value='Logout'>
 			</form>
-		<font size="6" color="white">
+		<font size="6">
 			Project name :<?php echo " $row[projectName]"; ?>
 		</font><br><br>
-		<a href='../views/upload.php'>
-			<input type=image src=../views/icons/upload.png value=Upload a file style=display:inline>
-		</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<form method=post action=../views/upload.php style=display:inline>
+			<div style='top:200px;left:50px;position:absolute'>
+				<input type=image src=../views/icons/upload.png value=Upload a file style=display:inline>
+			</div>
+		</form>
 		<form method=post action=gitCommands/download.php style=display:inline>
-			<input type=image src=../views/icons/download.png value='Download all files'><br>
+			<div style='top:200px;left:300px;position:absolute'>
+				<input type=image src=../views/icons/download.png value='Download all files'><br>
+			</div>
 		</form>
 	</font>
-	<font size='4' color='white' face='ubuntu'>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	Upload
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	&nbsp;&nbsp;&nbsp;&nbsp;
-	Download
+	<font size='4' face='ubuntu'>
+	<div style='top:360px;left:120px;position:absolute'>
+		Upload
+	</div>
+	<div style='top:360px;left:360px;position:absolute'>
+		Download
+	</div>
 	</font>
+	<div style='top:150px;right:300px;position:absolute'>
+		<?php
+			$con->query("SELECT Contributions FROM Contributions WHERE uname=$row[uname]");
+		?>
+			
+		Contibutions<br>
+	</div>
+	<div style='bottom:0px;position:absolute'>
+	<h6>Copyright(c).All Rights Reserved.GEC TCR LAG 2010-2014</h6></div>
 	</body>
 </html>
