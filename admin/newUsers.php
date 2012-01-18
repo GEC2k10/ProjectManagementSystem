@@ -17,15 +17,15 @@
 	<h1 align=center>Add New Users</h1>
 	<body bgcolor=#cfcfcf style='font-family:ubuntu'>
 	<form action=controllers/add.py method=post>
-	".str_repeat("&nbsp",10);
+	";
 
-	echo "Username".str_repeat("&nbsp;",35);
-	echo "Project".str_repeat("&nbsp;",35);
-	echo "Email".str_repeat("&nbsp;",10)."<br>";
+	echo "<div style='left:75px;position:absolute'>Username</div>";
+	echo "<div style='left:250px;position:absolute'>Project</div>";
+	echo "<div style='left:425px;position:absolute'>Email</div><br>";
 	for($i=0;$i<10;$i++)
 	{
-		echo $i+1;
-		echo ".<input type=text name=uname[$i]>";
+		echo $i;
+		echo ".&nbsp;<input type=text name=uname[$i]>";
 		echo "<input type=text name=project[$i]>";
 		echo "<input type=text name=email[$i]><br>";
 
