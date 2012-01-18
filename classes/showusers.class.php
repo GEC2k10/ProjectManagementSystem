@@ -17,9 +17,9 @@ class ShowUsers
 	$this->_files[] = substr($this->_rows['Contribution'],15);  /* File name field of user table */  
 	$this->_dates[] = $this->_rows['Date'];       /* Date field */
      }  
-    $this->_temp ="<a href='../views/showfile.php?filename=%s'>%s</a>";
+    $this->_temp ="<a href='../views/showfile.php?filename=%s&uname=%s'>%s</a>";
   }  
- public function show_files()
+ public function show_files($username)
   {
     $i=0;
     echo "<table border=\"1\">";
@@ -27,7 +27,7 @@ class ShowUsers
     while(list($index,$file) = each($this->_files))
     {
         echo"<tr>";
-	$this->_link=sprintf($this->_temp,$file,$file);
+	$this->_link=sprintf($this->_temp,$file,$username,$file);
 	echo "<td>".$this->_link."</td><td>".$this->_dates[$i]."</td>";
         echo "</tr>";
     }
