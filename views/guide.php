@@ -52,6 +52,5 @@ echo "<h3 align = left > Project Contributers <h3>";
 $guide = new Guide($_SESSION["projectName"]);
 $guide->show_members();
 $guide->show_commit_button();
-#$guide->show_commits();
 </script>
 </html>

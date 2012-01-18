@@ -27,21 +27,6 @@ class Guide
      }
      echo "</div>";  
 }
- public function show_commits()
- {
- 	$this->_reply=$this->_con->query("
-	SELECT Contribution FROM Contributions WHERE Username='$this->_projectName'");
-	while($this->_row=mysql_fetch_array($this->_reply)
-	{
-		echo "
-		<div class=contri>
-			";
-	}
-}
-
-
- 	
- }
 
  public function show_commit_button()
  {
