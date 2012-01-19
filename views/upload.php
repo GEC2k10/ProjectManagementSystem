@@ -27,15 +27,16 @@ body
 <h6 align="right"><a href="../controllers/logout.php"><input type="submit" value="Logout" style="display:inline"></a>
 <a href="../controllers/homePage.php"><input type="submit" value="Home" style="display:inline"></a></h6>
 <br><br><br><body bgcolor=#cfcfcf alink="#ee0000" link="#0000ee" vlink="#551a8b">
-<h1><center></h1></center>
+<h1><center>Upload your files</h1></center>
 <form method='post' action='mkdir.php' style="display:inline">
 <input type='image' src='icons/mkdir.png' value='New Directory'>
 </form>
 <br>
-<font face='Ubuntu' size='5' >Create a new directory</font>
+<font face='Ubuntu' size='2' >Create a new directory</font>
 <form action="../controllers/gitCommands/upload.php" method="post" enctype="multipart/form-data">
 <fieldset>
-<input type='file' name='file[]' multiple><br>
+Select files to upload:
+<input type='file' name='file[]' multiple><br><br>
 Select target:<br>
 <?php
 	exec("find /var/www/repos/$_SESSION[project]/  \( ! -regex '.*/\..*' \) -type d ",$out);
