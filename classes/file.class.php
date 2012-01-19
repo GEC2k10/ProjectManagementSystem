@@ -32,6 +32,12 @@ class ShowFile
  }
 
  }
+ public function Delete($filename)
+ {
+  session_start();
+  $filename="/var/www/repo/".$_SESSION['projectname'].$filename;
+ exec("rm -rf ".$filename);
+ }
   public function __descruct()
   {
     fclose($this->_handle);
