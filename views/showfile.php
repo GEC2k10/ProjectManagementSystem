@@ -11,9 +11,9 @@ session_start();
 if (!isset($_SESSION['projectName']) ) {   //Security Check
 header("Location:../views/login.html");
 }
-require_once("../classes/showfile.class.php");
+require_once("../classes/file.class.php");
 echo "<br/><h3>File :".$_GET['filename']."</h3>";
-$file = new ShowFile("/var/www/repos/".$_GET['filename']);
+$file = new File("/var/www/repos/".$_GET['filename']);
 $file->show_file();
 $file->show_contribution_dates("/var/www/repos/".$_GET['filename'],$_GET['uname']);
 ?> 
