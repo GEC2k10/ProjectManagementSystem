@@ -1,5 +1,5 @@
 <?php
-class ShowFile
+class File
 {
   private $_handle,$_filename,$_con,$_reply,$_rows;
   
@@ -35,8 +35,16 @@ class ShowFile
  public function Delete($filename)
  {
   session_start();
-  $filename="/var/www/repo/".$_SESSION['projectname'].$filename;
- exec("rm -rf ".$filename);
+  $filename="/var/www/repos/".$_SESSION['project']."/".$filename;
+ if(exec("rm -rf ".$filename))
+ {
+	$_SESSION['message']=$filename." deleted succesfully";
+ }
+ else
+ {
+	$_SESSION['message']=$filename."not exists";
+ }
+ header("location:../views/Deletefile.php");
  }
   public function __descruct()
   {
