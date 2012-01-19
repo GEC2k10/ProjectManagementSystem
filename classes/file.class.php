@@ -8,6 +8,7 @@ class File
    $this->_filename=$filename;
    if(!file_exists($filename))
    {
+  echo $filename;
      echo "<h1 align=center> Sorry the file not found ,or might have Issues !!!! </h1><br/>"; 
      exit; 
    } 
@@ -35,7 +36,7 @@ class File
  public function Delete($filename)
  {
   session_start();
-  $filename="/var/www/repos/".$_SESSION['project']."/".$filename;
+  $filename="/var/www/repos/$_SESSION[projectName]/".$filename;
  if(exec("rm -rf ".$filename))
  {
 	$_SESSION['message']=$filename." deleted succesfully";

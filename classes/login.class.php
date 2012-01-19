@@ -9,25 +9,24 @@
 
 class Login
 {
-  private $_con,$_query,$_reply,$_row;
-  private $_uname,$_passwd,$_projectName;
+  private $_uname,$_passwd,$_projectName,$_row,$_con;
   private $_sessionID;
   public function __construct($uname,$passwd)
   {
-    $this->_con=mysql_connect("localhost","root","password");
-    mysql_select_db("GitRepo",$this->_con);
+  	require_once("database.class.php");
+    $this->_con=new Database;
     $this->_uname=mysql_real_escape_string(trim(substr($uname,0,30)));
     $this->_passwd=sha1($passwd);
-    $this->_query=sprintf("
+    $query=sprintf("
 	SELECT uname,projectName FROM Accounts WHERE uname='%s' AND passwd='%s'",$this->_uname,$this->_passwd);
-    $this->_reply=mysql_query($this->_query,$this->_con);
-    $this->_row = mysql_fetch_assoc($this->_reply);
-    if( $this->_row['uname']=="")
+    $reply=$this->_con->query($query);
+    if($reply==0)
     { 
-       mysql_close($this->_con);
+       $this->_con->close();
        header("Location:/lag/views/loginwrong.html");
        exit;
     }
+    $this->_row = mysql_fetch_assoc($reply);
     $this->_projectName=$this->_row['projectName'];
   }
   private function is_guide()  
@@ -47,28 +46,28 @@ class Login
     if( $this->is_guide())
     {
         $_SESSION['projectName']=$this->_projectName;
-     	mysql_close($this->_con);
+      	$this->_con->close();
 		header("Location:../views/guide.php");  
 		exit;
     }
     else if($this->is_user())
     {
         $this->_sessionID = sha1(date("D M j G:i:s T Y"));
-        $_SESSION['SessionID']=$this->_sessionID;
-        $_SESSION['username']=$this->_uname;
-		$_SESSION['project']=$this->_projectName;
+        $_SESSION['sessionID']=$this->_sessionID;
+        $_SESSION['uname']=$this->_uname;
+		$_SESSION['projectName']=$this->_projectName;
 		$query="UPDATE Accounts SET sessionID='$this->_sessionID' where uname='$this->_uname'";
-		mysql_query($query,$this->_con);
-      	mysql_close($this->_con);
+		$this->_con->query($query);
+      	$this->_con->close();
 		header("Location:homePage.php");
     }
     else if($this->is_admin()) 
 	{
         $this->_sessionID = sha1(date("D M j G:i:s T Y"));
-        $_SESSION['SessionID']=$this->_sessionID;
+        $_SESSION['sessionID']=$this->_sessionID;
 		$query="UPDATE Accounts SET sessionID='$this->_sessionID' where uname='$this->_uname'";
-		mysql_query($query,$this->_con);
-	    mysql_close($this->_con);
+		$this->_con->query($query);
+      	$this->_con->close();
 		header("Location:/lag/admin/adminHome.php");
 	}
    }  

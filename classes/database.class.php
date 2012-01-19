@@ -17,6 +17,12 @@
 			else
     			return $reply;
 		}
+		public function checkCookie($ssid)
+		{
+			if ($this->query("SELECT uname FROM Accounts WHERE sessionID='$ssid'")==0)
+				return 0;
+			return 1;
+		}
 
 		public function close()
 		{

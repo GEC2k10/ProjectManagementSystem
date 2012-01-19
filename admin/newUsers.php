@@ -2,7 +2,7 @@
 	session_start();
 	require_once("../classes/database.class.php");
 	$con=new Database;
-	if ($con->query("SELECT uname FROM Accounts WHERE sessionID='$_SESSION[SessionID]'")==0)
+	if ($con->query("SELECT uname FROM Accounts WHERE sessionID='$_SESSION[sessionID]'")==0)
 	{
 		$con->close();
 		header("Location:/lag/views/login.html");		
