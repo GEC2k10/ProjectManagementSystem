@@ -8,9 +8,14 @@ body {
 <body>
 <?php
 session_start();
-if (!isset($_SESSION['projectName']) ) {   //Security Check
-header("Location:../views/login.html");
+require_once("../classes/database.class.php");
+$con=new Database;
+if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
+{
+	$con->close();
+	header("loginwrong.html");
 }
+$con->close();
 require_once("../classes/file.class.php");
 echo "<br/><h3>File :".$_GET['filename']."</h3>";
 $file = new File("/var/www/repos/".$_GET['filename']);

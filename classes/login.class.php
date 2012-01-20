@@ -18,7 +18,8 @@ class Login
     $this->_uname=mysql_real_escape_string(trim(substr($uname,0,30)));
     $this->_passwd=sha1($passwd);
     $query=sprintf("
-	SELECT uname,projectName FROM Accounts WHERE uname='%s' AND passwd='%s'",$this->_uname,$this->_passwd);
+	SELECT uname,projectName,sessionID FROM Accounts WHERE uname='%s' AND passwd='%s'"
+	,$this->_uname,$this->_passwd);
     $reply=$this->_con->query($query);
     if($reply==0)
     { 
@@ -45,7 +46,17 @@ class Login
   {
     if( $this->is_guide())
     {
-        $_SESSION['projectName']=$this->_projectName;
+		if($this->_row['sessionID']=='0')
+		{
+			chdir("/var/www/repos/$this->_projectName/");
+			system("git init");
+		}
+        $this->_sessionID = sha1(date("D M j G:i:s T Y"));
+        $_SESSION['sessionID']=$this->_sessionID;
+        $_SESSION['uname']=$this->_uname;
+		$_SESSION['projectName']=$this->_projectName;
+		$query="UPDATE Accounts SET sessionID='$this->_sessionID' where uname='$this->_uname'";
+		$this->_con->query($query);
       	$this->_con->close();
 		header("Location:../views/guide.php");  
 		exit;

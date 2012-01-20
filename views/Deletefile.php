@@ -15,7 +15,7 @@ body
 	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
 	{
 		$con->close();
-		header("location:login.html");
+		header("location:loginwrong.html");
 	}
 	$con->close();
 ?>

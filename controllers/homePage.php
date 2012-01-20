@@ -8,12 +8,8 @@
 	session_start();
 	if ($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
 	{
-//User not logged in and tries to access hompepage.php by typing in the url
-		echo '
-		<body bgcolor=#cfcfcf>
-		<h3>You are not logged in..Please Login...</h3>
-		<br><a href=../views/login.html><input type=submit value=Login></a>';
-		exit;
+		$con->close();
+		header("location:../views/loginwrong.html");
 	}
 	echo "<title>Homepage of $_SESSION[uname]</title>";
 	echo $_SESSION['message'];$_SESSION['message']=''; 

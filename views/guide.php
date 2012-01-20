@@ -40,10 +40,14 @@ body {
 </style>
 <body bgcolor = "green">
 <script language="php">
-if (!isset($_SESSION['projectName']) ) {   //prevents the back login problem after logout
-header("Location:../views/login.html");
+require_once("../classes/database.class.php");
+$con=new Database;
+if ($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
+{
+	$con->close();
+	header("Location:../views/loginwrong.html");
 }
-
+$con->close();
 require_once("../classes/guide.class.php"); 
 echo "<h1 align=center>Guides Home Page</h1>";
 echo "<a href='../controllers/logout.php'><h3 align='right'><input type='submit' value='Logout'></h3></a>";
