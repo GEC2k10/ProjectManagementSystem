@@ -6,7 +6,7 @@
 	require_once("../classes/database.class.php");
 	$con = new Database();
 	session_start();
-	if ($con->checkCookie($_SESSION['sessionID'])==0)
+	if ($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
 	{
 //User not logged in and tries to access hompepage.php by typing in the url
 		echo '

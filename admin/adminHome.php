@@ -2,7 +2,9 @@
 	session_start();
 	require_once("../classes/database.class.php");
 	$con=new Database;
-	if ($con->query("SELECT uname FROM Accounts WHERE sessionID='$_SESSION[sessionID]'")==0)
+	echo "$_SESSION[uname]<br>$SESSION[sessionID]";
+	echo $con->checkCookie($_SESSION['sessionID'],'admin');
+	if($con->checkCookie($_SESSION['sessionID'],'admin')==0)
 	{
 		$con->close();
 		header("Location:../views/login.html");		

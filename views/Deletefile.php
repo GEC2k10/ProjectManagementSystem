@@ -12,7 +12,7 @@ body
 	session_start();
 	require_once("../classes/database.class.php");
 	$con=new Database;
-	if($con->checkCookie($_SESSION['sessionID'])==0)
+	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
 	{
 		$con->close();
 		header("location:login.html");

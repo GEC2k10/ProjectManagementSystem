@@ -15,8 +15,8 @@
 			else
     			return $reply;
 		}
-		public function checkCookie($ssid) {
-			if ($this->query("SELECT uname FROM Accounts WHERE sessionID='$ssid'")==0)
+		public function checkCookie($ssid,$uname) {
+			if ($this->query("SELECT uname FROM Accounts WHERE sessionID='$ssid' AND uname='$uname'")==0)
 				return 0;
 			return 1;
 		}
