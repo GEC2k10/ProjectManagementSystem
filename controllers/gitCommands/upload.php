@@ -2,9 +2,8 @@
 <title>Upload</title>
 <?php
 	session_start();
-	$_SESSION['message']=' ';
-	$con=mysql_connect("localhost","root","password");
-	mysql_select_db("GitRepo",$con);
+	require_once("../../classes/database.class.php");
+	$con=new Database;
 	$target=$_POST['directory'];
 	if($target[strlen($target)-1]!='/')
 		$target=$target.'/';
@@ -15,10 +14,14 @@
 		$tmp=$_FILES['file']['tmp_name'][$count];
 		$count=$count + 1;
 		$temp=$temp.basename($filename);
-		$rply=move_uploaded_file($tmp,$temp);
-		$_SESSION['message']=$rply;
-                $query="INSERT INTO Contributions VALUE(\"".$_SESSION['uname']."\",\"".$temp."\",CURDATE())";
-                $reply=mysql_query($query,$con);
+		if(move_uploaded_file($tmp,$temp))
+		{
+			$con->query("INSERT INTO messages VALUES('$filename uploaded successfully!!!')");
+			$query="INSERT INTO Contributions VALUE('$_SESSION[uname]','$temp',CURDATE())";
+			$con->query($query);
+		}
+		else
+			$con->query("INSERT INTO messages VALUES('$filename upload failed!!!')");
 		$temp='';
 		$tmp='';
 	}

@@ -21,6 +21,19 @@
 			return 1;
 		}
 
+		public function messageDump() {
+			$reply=$this->query("SELECT * FROM messages");
+			while($row = mysql_fetch_assoc($reply))
+				$message=$message.$row['message']."\\n";
+			if(strlen($message)>0)
+			{
+				echo "	<script type='text/javascript'>
+						alert('$message');
+						</script>";
+			}
+			$this->query("DELETE FROM messages");
+		}
+
 		public function close()
 		{
 			mysql_close($this->_con);  // detatches the connection 

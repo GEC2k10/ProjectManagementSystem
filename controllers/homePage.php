@@ -11,6 +11,7 @@
 		$con->close();
 		header("location:../views/loginwrong.html");
 	}
+	$con->messageDump();
 	echo "<title>Homepage of $_SESSION[uname]</title>";
 	echo $_SESSION['message'];$_SESSION['message']=''; 
 	?>
