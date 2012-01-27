@@ -25,19 +25,21 @@ body
 <br><br><br><body bgcolor=#cfcfcf alink="#ee0000" link="#0000ee" vlink="#551a8b">
 <form action="../controllers/Deletefile.php" method="post" >
 <fieldset>
-Enter Directory or file name:<input type="text" name="filename"><br>
-<input type="submit" value="Delete" >
 <?php
-	exec("find /var/www/repos/$_SESSION[projectName]/  \( ! -regex '.*/\..*' \) -type d ",$out);
-	foreach ($out as &$tmp)
+	exec("find /var/www/repos/".$_SESSION['project'],$temp);
+	$i=0;
+	foreach($temp as &$filename)
 	{
-		$sub=substr($tmp,15+strlen($_SESSION['projectName']));
-		if(strcmp($tmp,$out[0])==0)
-			echo "<input type='radio' name='directory' value='$tmp' CHECKED/>$sub<br>";
-		else
-			echo "<input type='radio' name='directory' value='$tmp'/>$sub<br>";
+		if($i!=0 and $i!=1)
+		{
+			echo "<input type=\"checkbox\" name=\"files[]\" value=\"".substr($filename,21)."\" />".substr($filename,21)."<br />";
+		}	
+		$i++;
 	}
+	echo "<input type=submit value=\"Delete\">";
+	echo "</form>";
+//Enter Directory or file name:<input type="text" name="filename"><br>
+//</form>
 ?>
-</form>
 </body>
 </html>
