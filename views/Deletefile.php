@@ -38,8 +38,6 @@ body
 	}
 	echo "<input type=submit value=\"Delete\">";
 	echo "</form>";
-//Enter Directory or file name:<input type="text" name="filename"><br>
-//</form>
 ?>
 </body>
 </html>
