@@ -26,15 +26,15 @@ body
 <form action="../controllers/Deletefile.php" method="post" >
 <fieldset>
 <?php
-	exec("find /var/www/repos/".$_SESSION['project'],$temp);
+	exec("find /var/www/repos/$_SESSION[projectName]/  \( ! -regex '.*/\..*' \) ",$out);
 	$i=0;
-	foreach($temp as &$filename)
+	foreach($out as &$tmp)
 	{
-		if($i!=0 and $i!=1)
-		{
-			echo "<input type=\"checkbox\" name=\"files[]\" value=\"".substr($filename,21)."\" />".substr($filename,21)."<br />";
-		}	
-		$i++;
+		$sub=substr($tmp,15+strlen($_SESSION['projectName']));
+		if(strcmp($tmp,$out[0])==0)
+			echo "<input type=checkbox name='directory' value='$tmp' CHECKED/>$sub<br>";
+		else
+			echo "<input type=checkbox name='directory' value='$tmp'/>$sub<br>";
 	}
 	echo "<input type=submit value=\"Delete\">";
 	echo "</form>";
