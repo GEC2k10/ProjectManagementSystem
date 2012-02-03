@@ -19,8 +19,8 @@ class user:
 	def writeToDatabase(self):
 		con=MySQLdb.connect("localhost","root","password","GitRepo")
 		cursor=con.cursor()
-		query="INSERT INTO Accounts VALUES('%s',SHA1('%s'),'%s','%s','%s','%s','%s')"\
-		%(self.uname,self.passwd,self.project,self.email,' ',' ',' ')
+		query="INSERT INTO Accounts VALUES('%s',SHA1('%s'),'%s','%s','%s')"\
+		%(self.uname,self.passwd,self.project,self.email,' ')
 		cursor.execute(query)
 		con.close()
 	def mail(self,login):
