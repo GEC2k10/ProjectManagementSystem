@@ -19,12 +19,14 @@ class File
 	    highlight_file($this->_filename);
 	    echo "<hr size=2>";
 	}
-	public function show_contribution_dates($filename,$username) //This function will display the dates in which a particular user has contributed a particular file
+	public function show_contribution_dates($filename,$username)
+	//This function will display the dates in which a particular user has contributed a particular file
 	{
-	require_once("../classes/database.class.php");
+	require_once("database.class.php");
 	echo "Contribution Dates : <br/>";
 	$this->_con=new Database(); 
-	$this->_reply=$this->_con->query(sprintf("SELECT Date from Contributions where Username=%s and Contribution='%s'",$username,$filename));
+	$this->_reply=$this->_con->query(
+	sprintf("SELECT Date from Contributions where Username=%s and Contribution='%s'",$username,$filename));
 	while($this->_rows=mysql_fetch_array($this->_reply))
 	 {
 	  echo $this->_rows['Date'];

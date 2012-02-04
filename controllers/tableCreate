@@ -1,3 +1,3 @@
 use GitRepo
-CREATE TABLE Accounts(uname varchar(32) PRIMARY KEY,passwd varchar(40),projectName varchar(32),email varchar(100) UNIQUE,sessionID varchar(40));
-CREATE TABLE Contributions(Username varchar(30),Contribution varchar(40), Date varchar(40));
+CREATE TABLE Accounts(uname varchar(32) PRIMARY KEY,name varchar(32),passwd varchar(40),projectName varchar(32),email varchar(100) UNIQUE,sessionID varchar(40));
+CREATE TABLE Contributions(Username varchar(30),Contribution varchar(200), Date varchar(40));

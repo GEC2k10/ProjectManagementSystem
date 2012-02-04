@@ -11,7 +11,7 @@ class user:
 	passwd=''
 	project=''
 	email=''
-	def __init__(self,uname,project,email):
+	def __init__(self,uname,name,project,email):
 		self.uname=uname
 		self.project=project
 		self.email=email
@@ -19,8 +19,8 @@ class user:
 	def writeToDatabase(self):
 		con=MySQLdb.connect("localhost","root","password","GitRepo")
 		cursor=con.cursor()
-		query="INSERT INTO Accounts VALUES('%s',SHA1('%s'),'%s','%s','%s')"\
-		%(self.uname,self.passwd,self.project,self.email,' ')
+		query="INSERT INTO Accounts VALUES('%s','%s',SHA1('%s'),'%s','%s','%s')"\
+		%(self.uname,self.name,self.passwd,self.project,self.email,' ')
 		cursor.execute(query)
 		con.close()
 	def mail(self,login):
@@ -46,11 +46,12 @@ def getdata():
 	while(1):
 		try:
 			uname=form['uname[%d]'%(i)].value
+			name=form['name[%d]'%(i)].value
 			project=form['project[%d]'%(i)].value
 			email=form['email[%d]'%(i)].value
 		except KeyError:
 			break
-		userObj=user(uname,project,email)
+		userObj=user(uname,name,project,email)
 		i=i+1
 		userObj.writeToDatabase()
 		userObj.mail(server)

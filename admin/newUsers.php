@@ -20,12 +20,14 @@
 	";
 
 	echo "<div style='left:75px;position:absolute'>Username</div>";
-	echo "<div style='left:250px;position:absolute'>Project</div>";
-	echo "<div style='left:425px;position:absolute'>Email</div><br>";
+	echo "<div style='left:250px;position:absolute'>Name</div>";
+	echo "<div style='left:425px;position:absolute'>Project</div>";
+	echo "<div style='left:600px;position:absolute'>Email</div><br>";
 	for($i=0;$i<10;$i++)
 	{
 		echo $i;
 		echo ".&nbsp;<input type=text name=uname[$i]>";
+		echo "<input type=text name=name[$i]>";
 		echo "<input type=text name=project[$i]>";
 		echo "<input type=text name=email[$i]><br>";
 
