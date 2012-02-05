@@ -28,7 +28,16 @@ session_start();
 		background-color:#afafaf;
 		margin-left:200px;
 		margin-top:-350px;
-	}	
+	}
+
+	.listCommits
+	{
+		border:3px solid black;
+		width:200px;
+		background-color:#afafaf;
+		margin-left:800px;
+		margin-top:-350px;
+	}
 
 </style>
 
@@ -49,6 +58,8 @@ if ($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
 }
 $con->close();
 require_once("../classes/guide.class.php"); 
+chdir("/var/www/repos/$_SESSION[projectName]");
+exec("git checkout master");
 echo "<h1 align=center>Guides Home Page</h1>";
 echo "<a href='../controllers/logout.php'><h3 align='right'><input type='submit' value='Logout'></h3></a>";
 echo "<h3 align=center>Weclome ".$_SESSION["projectName"]." Guide</h3>";
@@ -56,5 +67,6 @@ echo "<h3 align = left > Project Contributers <h3>";
 $guide = new Guide($_SESSION["projectName"]);
 $guide->show_members();
 $guide->show_commit_button();
+$guide->show_commits();
 </script>
 </html>

@@ -40,8 +40,8 @@
 		</form>
 	</font>
 	<font size='4' face='ubuntu'>
-	<div style='top:360px;left:120px;position:absolute'>
-		Upload
+	<div style='top:360px;left:90px;position:absolute'>
+		Modify Project	
 	</div>
 	<div style='top:360px;left:360px;position:absolute'>
 		Download

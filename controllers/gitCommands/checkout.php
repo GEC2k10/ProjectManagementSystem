@@ -9,6 +9,13 @@
 	}
 	$con->close();
 	chdir("/var/www/repos/$_SESSION[projectName]/");
-	exec("git checkout $_POST[version]");
+	exec("git checkout $_GET[version]");
+
+	chdir("/var/www/repos/");
+	exec("zip -r ../downloads/$_SESSION[sessionID].zip $_SESSION[projectName]");
+	chdir("/var/www/downloads/");
+	header( "Content-Disposition: attachment; filename=$_SESSION[sessionID].zip" ); 
+	readfile("$_SESSION[sessionID].zip");
+	chdir("/var/www/repos/$_SESSION[projectName]/");
 	header("location:../../views/guide.php");
 ?>
