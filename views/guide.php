@@ -58,8 +58,6 @@ if ($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
 }
 $con->close();
 require_once("../classes/guide.class.php"); 
-chdir("/var/www/repos/$_SESSION[projectName]");
-exec("git checkout master");
 echo "<h1 align=center>Guides Home Page</h1>";
 echo "<a href='../controllers/logout.php'><h3 align='right'><input type='submit' value='Logout'></h3></a>";
 echo "<h3 align=center>Weclome ".$_SESSION["projectName"]." Guide</h3>";

@@ -9,6 +9,7 @@ import commons
 class user:
 	uname=''
 	passwd=''
+	name=''
 	project=''
 	email=''
 	def __init__(self,uname,name,project,email):
@@ -16,6 +17,7 @@ class user:
 		self.project=project
 		self.email=email
 		self.passwd=randPass.gen()
+		self.name=name
 	def writeToDatabase(self):
 		con=MySQLdb.connect("localhost","root","password","GitRepo")
 		cursor=con.cursor()
