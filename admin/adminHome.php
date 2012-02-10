@@ -19,7 +19,8 @@
 	<h2>Administrative tasks</h2>
 	<h3>
 	1.<a href='newUsers.php'>Add new users</a><br>
-	2.<a href='recoverPassword.php'>Recover lost password</a>
+	2.<a href='recoverPassword.php'>Recover lost password</a><br>
+	3.<a href='/phpmyadmin'>Database Admin using <i>PHPMyAdmin</i>,with master reset</a>
 	</h3>
 	</body>
 	</html>";
