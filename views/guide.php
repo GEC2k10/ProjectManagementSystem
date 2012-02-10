@@ -23,7 +23,7 @@ session_start();
 	.commit
 	{
 		border:3px solid black;
-		width:400px;
+		width:480px;
 		height:340px;
 		background-color:#afafaf;
 		margin-left:200px;

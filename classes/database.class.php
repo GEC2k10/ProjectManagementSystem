@@ -23,6 +23,7 @@
 
 		public function messageDump() {
 			$reply=$this->query("SELECT * FROM messages");
+			$message='';
 			while($row = mysql_fetch_assoc($reply))
 				$message=$message.$row['message']."\\n";
 			if(strlen($message)>0)

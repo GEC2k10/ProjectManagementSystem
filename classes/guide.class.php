@@ -36,13 +36,10 @@ class Guide
 		echo "<form action='../controllers/gitCommands/commit.php' method='post'>";
 		echo "<center>Enter Commit message:</center> <br><br>";
 		echo "<input type='hidden' value='$this->_projectName' name='projectName'>";
-		echo "<center><textarea name='commitMessage' rows=10 cols=90>";
+		echo "<center><textarea name='commitMessage' rows=10 cols=55>";
 		echo "Commit time :".date("D M j G:i:s T Y");
 		while($row=mysql_fetch_assoc($reply))
-		{
-			echo "\n";
-			echo "$row[uname] uploaded $row[Contribution] on $row[Date]";
-		}
+			echo "\n$row[uname] uploaded ".substr($row['Contribution'],15+strlen($_SESSION['projectName']))." on $row[Date]";
 		echo "</textarea></center>";
 	    	echo "<center><input type='submit' value='Commit All'></center><br/><br>";
 		echo "</form>";

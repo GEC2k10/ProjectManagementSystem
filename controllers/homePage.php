@@ -51,7 +51,7 @@
 		<u>Recent Contibutions</u><br><br>
 		<i>
 		<?php
-			$reply=$con->query("SELECT DISTINCT Contribution FROM Contributions WHERE Username=$_SESSION[uname] ORDER BY Date DESC LIMIT 10");
+			$reply=$con->query("SELECT DISTINCT Contribution FROM Contributions WHERE uname=$_SESSION[uname] ORDER BY Date DESC LIMIT 10");
 			while($row=mysql_fetch_assoc($reply))
 			{
 				$file=substr($row['Contribution'],15);

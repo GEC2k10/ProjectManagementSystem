@@ -17,9 +17,10 @@ if($a[0][0]=='[')
 {
 	echo "<h1>Commited Succesfully!!!!</h1>";
 	$head=substr($a[0],8,7);
-	$query="INSERT INTO Contributions VALUES('$_POST[projectName]','$head',NOW())";
+	$query="
+	INSERT INTO Contributions VALUES('$_POST[projectName]','$_SESSION[projectName]','$head',NOW(),'1')";
 	$con->query($query);
-	$con->query("UPDATE Contributions SET commit='1' WHERE projectName=$_POST[projectName]");
+	$con->query("UPDATE Contributions SET commit='1' WHERE projectName='$_SESSION[projectName]'");
 	$con->close();
 }
 else
