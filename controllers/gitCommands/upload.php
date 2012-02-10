@@ -17,7 +17,7 @@
 		if(move_uploaded_file($tmp,$temp))
 		{
 			$con->query("INSERT INTO messages VALUES('$filename uploaded successfully!!!')");
-			$query="INSERT INTO Contributions VALUE('$_SESSION[uname]','$temp',CURDATE())";
+			$query="INSERT INTO Contributions VALUE('$_SESSION[uname]','$temp',NOW(),'0')";
 			$con->query($query);
 		}
 		else

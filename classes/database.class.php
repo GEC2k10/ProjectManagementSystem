@@ -13,7 +13,7 @@
 			if(mysql_num_rows($reply)==0)		
 				return 0;			
 			else
-    			return $reply;
+    				return $reply;
 		}
 		public function checkCookie($ssid,$uname) {
 			if ($this->query("SELECT uname FROM Accounts WHERE sessionID='$ssid' AND uname='$uname'")==0)
