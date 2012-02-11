@@ -15,8 +15,8 @@
 	{
 		echo "<h1>Commited Succesfully!!!!</h1>";
 		$head=substr($a[0],8,7);
-		$con->query="
-		INSERT INTO Contributions VALUES('$_POST[projectName]','$_SESSION[projectName]','$head',NOW(),'1')";
+		$con->query("
+		INSERT INTO Contributions VALUES('$_SESSION[projectName]','$_SESSION[projectName]','$head',NOW(),'1')");
 		$con->query("UPDATE Contributions SET commit='1' WHERE projectName='$_SESSION[projectName]'");
 		$con->close();
 	}
