@@ -7,14 +7,15 @@
 		$con->close();
 		header("location:../../views/loginwrong.html");
 	}
+	$message=$_POST['commitMessage']."\nEOC";
 	chdir("/var/www/repos/$_POST[projectName]");  // project name is passed to this script
 	exec("git init ");
 	exec("git add * ");
-	exec("git commit -am '$_POST[commitMessage]'",$a); // commits with an message 'message' 
+	exec("git commit -am '$message'",$a); // commits with an message 'message' 
 	if($a[0][0]=='[')
 	{
 		echo "<h1>Commited Succesfully!!!!</h1>";
-		$head=substr($a[0],8,7);
+		$head=substr($a[0],strpos($a[0],']')-7,7);
 		$con->query("
 		INSERT INTO Contributions VALUES('$_SESSION[projectName]','$_SESSION[projectName]','$head',NOW(),'1')");
 		$con->query("UPDATE Contributions SET commit='1' WHERE projectName='$_SESSION[projectName]'");

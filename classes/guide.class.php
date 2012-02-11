@@ -32,31 +32,28 @@ class Guide
 	{
 		$reply=$this->_con->query("
 		SELECT Contributions.uname,Contribution,Date FROM Contributions JOIN Accounts ON Contributions.uname=Accounts.uname WHERE Accounts.projectName='$this->_projectName' AND commit='0'");
-   		echo "<div class='commit'>";
-		echo "<form action='../controllers/gitCommands/commit.php' method='post'>";
-		echo "<center>Enter Commit message:</center> <br><br>";
-		echo "<input type='hidden' value='$this->_projectName' name='projectName'>";
-		echo "<center><textarea name='commitMessage' rows=10 cols=55>";
+   		echo "<div class='commit'>\n";
+		echo "<form action='../controllers/gitCommands/commit.php' method='post'>\n";
+		echo "<center>Enter Commit message:</center>\n <br><br>\n";
+		echo "<input type='hidden' value='$this->_projectName' name='projectName'>\n";
+		echo "<center><textarea name='commitMessage' rows=10 cols=55>\n";
 		echo "Commit time :".date("D M j G:i:s T Y");
 		while($row=mysql_fetch_assoc($reply))
 			echo "\n$row[uname] uploaded ".substr($row['Contribution'],15+strlen($_SESSION['projectName']))." on $row[Date]";
-		echo "</textarea></center>";
-	    	echo "<center><input type='submit' value='Commit All'></center><br/><br>";
-		echo "</form>";
-	    	echo"</div>";
+		echo "</textarea></center>\n";
+	   	echo "<center><input type='submit' value='Commit All'></center><br/><br>\n";
+		echo "</form>\n";
+	   	echo"</div>\n";
 	}
 	public function show_commits()
 	{
-		$reply=$this->_con->query("SELECT Date FROM Contributions WHERE uname='$this->_projectName'");
+		$reply=$this->_con->query("
+		SELECT Date,Contribution FROM Contributions WHERE uname='$this->_projectName'");
 		echo "<div class=listCommits>";
 		echo "Commits So far <br>";
 		if($reply!=0)
 			while($row=mysql_fetch_assoc($reply))
-			{
-				echo "
-				<a href=../controllers/gitCommands/checkout.php?version=$row[Contribution]>";
-				echo $row['Date']."<br></a>";
-			}
+				echo "<a href=../views/checkout.php?version=$row[Contribution]>$row[Date]<br></a>";
 		echo "</div>";
 	}
 };
