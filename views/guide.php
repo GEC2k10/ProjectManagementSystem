@@ -56,6 +56,11 @@ if ($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
 	$con->close();
 	header("Location:../views/loginwrong.html");
 }
+else if($_SESSION['uname']!=$_SESSION['projectName'])
+{
+	$con->close();
+	header("location:../controllers/homePage.php");
+}
 $con->close();
 require_once("../classes/guide.class.php"); 
 echo "<h1 align=center>Guides Home Page</h1>";

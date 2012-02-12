@@ -11,6 +11,11 @@
 		$con->close();
 		header("location:../views/loginwrong.html");
 	}
+	else if($_SESSION['uname']==$_SESSION['projectName'])
+	{
+		$con->close();
+		header("location:../views/guide.php");
+	}
 	$con->messageDump();
 	echo "<title>Homepage of $_SESSION[uname]</title>";
 	$_SESSION['message']=''; 
@@ -47,8 +52,8 @@
 		Download
 	</div>
 	<div style='top:420px;position:absolute'>
-		<a href=../views/recentContributions.php>Recent Contibutions</a><br>
-		<a href=changePass.php>Change Account Password</a>
+		<a href=../views/recentContributions.php>View Files in Current Version</a><br>
+		<a href=../views/changePassword.php>Change Account Password</a>
 	</div>
 	<div style='bottom:0px;position:absolute'>
 	<h6>Copyright(c).All Rights Reserved.GEC TCR LAG 2010-2014</h6></div>
