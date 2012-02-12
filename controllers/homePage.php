@@ -46,24 +46,12 @@
 	<div style='top:360px;left:360px;position:absolute'>
 		Download
 	</div>
-	</font>
-	<div style='top:150px;right:300px;position:absolute;border:3px solid #888;font-size:18px'>
-		<u>Recent Contibutions</u><br><br>
-		<i>
-		<?php
-			$reply=$con->query("SELECT DISTINCT Contribution FROM Contributions WHERE uname=$_SESSION[uname] ORDER BY Date DESC LIMIT 10");
-			while($row=mysql_fetch_assoc($reply))
-			{
-				$file=substr($row['Contribution'],15);
-    			echo "
-				<a href=../views/showfile.php?filename=$file>";
-				echo substr($row['Contribution'],16+strlen($_SESSION['projectName']))."<br></a>";
-			}
-			$con->close();
-		?>
-		</i>
+	<div style='top:420px;position:absolute'>
+		<a href=../views/recentContributions.php>Recent Contibutions</a><br>
+		<a href=changePass.php>Change Account Password</a>
 	</div>
 	<div style='bottom:0px;position:absolute'>
 	<h6>Copyright(c).All Rights Reserved.GEC TCR LAG 2010-2014</h6></div>
 	</body>
+	</font>
 </html>

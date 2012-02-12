@@ -4,6 +4,11 @@
 	session_start();
 	require_once("../../classes/database.class.php");
 	$con=new Database;
+	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
+	{
+		$con->close();
+		header("../views/loginwrong.html");
+	}
 	$target=$_POST['directory'];
 	if($target[strlen($target)-1]!='/')
 		$target=$target.'/';

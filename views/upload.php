@@ -17,6 +17,7 @@ body
 		$con->close();
 		header("location:loginwrong.html");
 	}
+	$con->messageDump();
 	$con->close();
 ?>
 
@@ -36,7 +37,7 @@ body
 	</div>
 </form>
 
-<form method='post' action='Deletefile.php' >
+<form method='post' action='deleteMenu.php' >
 	<div style="top:90px;left:150px;position:absolute">
 		<input type='image' src='icons/delete.jpg' value='New Directory'>
 		<div style="top:90px;left:35px;position:absolute">
