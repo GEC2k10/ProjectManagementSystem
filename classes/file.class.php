@@ -10,7 +10,8 @@ class File
 		if(!file_exists($filename))
 		{
 			echo $filename;
-			echo "<h1 align=center> Sorry the file not found ,or might have Issues !!!! </h1><br/>"; 
+			echo "
+			<h1 align=center> Sorry the file not found ,or might have Issues !!!! </h1><br/>"; 
 			exit; 
 		} 
 		$this->_handle=fopen($filename,"r");
@@ -25,11 +26,12 @@ class File
 
 	public function show_contribution_dates($filename,$username)
 	{
-	echo "Contribution Dates : <br/>";
-	$reply=$this->_con->query(
-	sprintf("SELECT Date from Contributions where uname=%s and Contribution='%s'",$username,$filename));
-	$row=mysql_fetch_array($reply);
-	echo $rows['Date'];
+		echo "Contribution Dates : <br/>";
+		$reply=$this->_con->query(
+		sprintf("
+		SELECT Date from Contributions where uname=%s and Contribution='%s'",$username,$filename));
+		$row=mysql_fetch_array($reply);
+		echo $rows['Date'];
 	}
 
 	public function Delete($filename)
@@ -42,12 +44,13 @@ class File
 			exec("rm -rf *");
 		}
 		else 
-		{
 			if(!exec("rm -rf $filename"))
-				$this->_con->query("INSERT INTO messages VALUES('$filename deleted succesfully!!!')");
-			else
-				$this->_con->query("INSERT INTO messages VALUES('$filename doesn't exist!!!')");
-		}
+			{
+				$this->_con->query("
+				INSERT INTO messages VALUES('$filename deleted succesfully!!!')");
+				$this->_con->query("
+				UPDATE Contributions SET commit='1' WHERE Contribution='$filename'");
+			}
 	}
 	public function __destruct()
 	{
