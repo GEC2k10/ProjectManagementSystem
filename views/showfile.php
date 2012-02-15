@@ -24,8 +24,9 @@ body {
 	require_once("../classes/file.class.php");
 	echo "<br/><h3>File :".$_GET['filename']."</h3>";
 	$file = new File("/var/www/repos/".$_GET['filename']);
+	$file->download_button();
 	$file->show_file();
-	$file->show_contribution_dates("/var/www/repos/".$_GET['filename'],$_GET['uname']);
+	$file->download_button();
 ?> 
 </body>
 </html>

@@ -23,15 +23,14 @@ class File
 	    highlight_file($this->_filename);
 	    echo "<hr size=2>";
 	}
-
-	public function show_contribution_dates($filename,$username)
+	public function download_button()
 	{
-		echo "Contribution Dates : <br/>";
-		$reply=$this->_con->query(
-		sprintf("
-		SELECT Date from Contributions where uname=%s and Contribution='%s'",$username,$filename));
-		$row=mysql_fetch_array($reply);
-		echo $rows['Date'];
+		echo "
+		<form action=../controllers/download.php method=post>
+		<input type=hidden value=$this->_filename name=file>
+		<input type=submit value='Download This File' style=height:25px>
+		</form>
+		";
 	}
 
 	public function Delete($filename)
