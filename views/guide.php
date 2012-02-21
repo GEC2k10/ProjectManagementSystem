@@ -56,6 +56,7 @@ if ($con->checkCookie($_SESSION['sessionID'],$_SESSION['projectName'])==0)
 	$con->close();
 	header("Location:../views/loginwrong.html");
 }
+$con->messageDump();
 $con->close();
 require_once("../classes/guide.class.php"); 
 echo "<h1 align=center>Guides Home Page</h1>";

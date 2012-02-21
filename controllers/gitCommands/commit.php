@@ -14,7 +14,7 @@
 	exec("git commit -am '$message'",$a); // commits with an message 'message' 
 	if($a[0][0]=='[')
 	{
-		echo "<h1>Commited Succesfully!!!!</h1>";
+		$con->query("INSERT INTO messages VALUES('Commited Succesfully!!!!')");
 		$head=substr($a[0],strpos($a[0],']')-7,7);
 		$con->query("
 		INSERT INTO Contributions VALUES('$_SESSION[projectName]','$_SESSION[projectName]','$head',NOW(),'1')");
@@ -22,6 +22,8 @@
 		$con->close();
 	}
 	else
-		echo "<h1>Nothing to Commit!!!</h1>";
+		$con->query("INSERT INTO messages VALUES('Nothing to Commit!!!')");
+	$con->close();
+	header("location:../../views/guide.php");
 ?>
 
