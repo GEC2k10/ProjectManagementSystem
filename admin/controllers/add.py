@@ -26,9 +26,9 @@ class user:
 		cursor.execute(query)
 		con.close()
 	def mail(self,login):
-		if not mail.send(self.uname,self.passwd,self.email,login):
-			return 0
-		return 1
+		if mail.send(self.uname,self.passwd,self.email,login):
+			return 1
+		return 0
 	def mkdir(self):
 		try :
 			os.mkdir('/var/www/repos/'+self.project,0777)
@@ -54,10 +54,15 @@ def getdata():
 		except KeyError:
 			break
 		userObj=user(uname,name,project,email)
-		i=i+1
-		userObj.writeToDatabase()
-		userObj.mail(server)
 		userObj.mkdir()
+		i=i+1
+		if userObj.mail(server) == 0:
+			con=MySQLdb.connect("localhost","root","password","GitRepo")
+			cursor=con.cursor()
+			cursor.execute("INSERT INTO messages VALUES('Mail to %s failed!!!')"%uname)
+			con.close()
+			continue
+		userObj.writeToDatabase()
 	server.quit()
 getdata()
 commons.redirect('/lag/admin')

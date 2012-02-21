@@ -9,6 +9,7 @@
 	}
 	else
 	{
+	$con->messageDump();
 	$con->close();
 	$page="
 	<html>

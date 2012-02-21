@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText 
+import smtplib
 def send(uname,passwd,email,server):
 	handle=MIMEMultipart()
 	handle["From"]="gecgitrepoitory@gmail.com"
@@ -17,6 +18,8 @@ If you have no idea what is happening,please ignore this mail.Some body might ha
 mistake. 
 '''%(uname,passwd)
 	handle.attach(MIMEText(message))
-	if(server.sendmail("gecgitrepository@gmail.com",email,handle.as_string())):
+	try:
+		server.sendmail("gecgitrepository@gmail.com",email,handle.as_string())
+	except smtplib.SMTPRecipientsRefused:
 		return 0
 	return 1

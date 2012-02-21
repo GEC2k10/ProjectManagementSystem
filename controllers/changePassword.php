@@ -33,6 +33,7 @@
 	{
 		$passwd=sha1(mysql_escape_string($_POST['new']));
 		$con->query("UPDATE Accounts SET passwd='$passwd' WHERE uname='$_SESSION[uname]'");
+		$con->query("INSERT INTO messages VALUES('Password Changed successfully!!!')");
 		$con->close();
 		header("location:homePage.php");
 	}
