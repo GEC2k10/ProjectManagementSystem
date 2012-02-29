@@ -36,17 +36,18 @@ class File
 	public function Delete($filename)
 	{
 		session_start();
+		$name=substr($filename,15+strlen($_SESSION['projectName']));
 		if (trim($filename)==trim("/var/www/repos/$_SESSION[projectName]/"))
 		{
 			chdir($filename);
-			$this->_con->query("INSERT INTO messages VALUES('$filename deleted succesfully!!!')");
+			$this->_con->query("INSERT INTO messages VALUES('$name deleted succesfully!!!')");
 			exec("rm -rf *");
 		}
 		else 
 			if(!exec("rm -rf $filename"))
 			{
 				$this->_con->query("
-				INSERT INTO messages VALUES('$filename deleted succesfully!!!')");
+				INSERT INTO messages VALUES('$name deleted succesfully!!!')");
 				$this->_con->query("
 				UPDATE Contributions SET commit='1' WHERE Contribution='$filename'");
 			}

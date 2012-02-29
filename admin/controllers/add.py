@@ -54,7 +54,6 @@ def getdata():
 		except KeyError:
 			break
 		userObj=user(uname,name,project,email)
-		userObj.mkdir()
 		i=i+1
 		if userObj.mail(server) == 0:
 			con=MySQLdb.connect("localhost","root","password","GitRepo")
@@ -62,6 +61,7 @@ def getdata():
 			cursor.execute("INSERT INTO messages VALUES('Mail to %s failed!!!')"%uname)
 			con.close()
 			continue
+		userObj.mkdir()
 		userObj.writeToDatabase()
 	server.quit()
 getdata()
