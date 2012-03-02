@@ -21,7 +21,7 @@
 		exec("find /var/www/repos/$_SESSION[projectName]/  \( ! -regex '.*/\..*' \) -type f ",$row);
 		foreach ($row as &$tmp)
 			{
-				$file=substr($tmp,15);
+				$file=urlencode(substr($tmp,15));
     			echo "
 				<a href=../views/showfile.php?filename=$file>";
 				echo substr($tmp,15+strlen($_SESSION['projectName']))."<br></a>";
