@@ -44,7 +44,7 @@ class File
 			exec("rm -rf *");
 		}
 		else 
-			if(!exec("rm -rf $filename"))
+			if(!exec("rm -rf '$filename'"))
 			{
 				$this->_con->query("
 				INSERT INTO messages VALUES('$name deleted succesfully!!!')");
