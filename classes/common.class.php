@@ -19,6 +19,7 @@
 				<body bgcolor=#cfcfcf>";
 			echo $header;
 		}
+		
 	};
 ?>
 
