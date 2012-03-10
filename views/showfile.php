@@ -7,7 +7,7 @@ body {
 <head></head>
 <body>
 <form method=post action=../controllers/homePage.php >
-       <div style='top:1px;left:1200px;position:absolute'>
+       <div style='top:1px;right:10px;position:absolute'>
        <input type=submit value=Home>
        </div>
 </form>
