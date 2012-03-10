@@ -4,6 +4,7 @@
 	</head>
 	<?php
 	require_once("../classes/database.class.php");
+	require_once("../classes/common.class.php");
 	$con = new Database();
 	session_start();
 	if ($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
@@ -17,19 +18,9 @@
 		header("location:../views/guide.php");
 	}
 	$con->messageDump();
-	echo "<title>Homepage of $_SESSION[uname]</title>";
 	$_SESSION['message']=''; 
 	?>
-	<body bgcolor=#cfcfcf>
-		<font face='Ubuntu'>
-			<h1>
-				<center>
-						Welcome <?php echo $_SESSION['uname'];?>
-				</center>
-			</h1>
-			<form method='post' action='logout.php' align='right'>
-				<input type='submit' value='Logout'>
-			</form>
+						<?php $page=new page("Welcome $_SESSION[uname]");?>
 		<font size="6">
 			Project name :<?php echo  $_SESSION['projectName']; ?>
 		</font><br><br>
@@ -43,8 +34,7 @@
 				<input type=image src=../views/icons/download.png value='Download all files'><br>
 			</div>
 		</form>
-	</font>
-	<font size='4' face='ubuntu'>
+	<font size='4'>
 	<div style='top:360px;left:90px;position:absolute'>
 		Modify Project	
 	</div>
