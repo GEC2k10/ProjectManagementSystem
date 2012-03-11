@@ -37,7 +37,6 @@ class Guide
    		echo "<div class='commit'>\n";
 		echo "<form action='../controllers/gitCommands/commit.php' method='post'>\n";
 		echo "<center>Enter Commit message:</center>\n <br><br>\n";
-		echo "<input type='hidden' value='$this->_projectName' name='projectName'>\n";
 		echo "<center><textarea name='commitMessage' rows=10 cols=55>\n";
 		echo "Commit time :".date("D M j G:i:s T Y");
 		while($row=mysql_fetch_assoc($reply))

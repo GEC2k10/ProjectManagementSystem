@@ -9,10 +9,10 @@
 				<title>$title</title>
 				<h1><center>$title</center></h1>
 				<div style=top:5px;right:5px;position:absolute>
-					<a href=/lag/controllers/homePage.php>
+					<a href=/controllers/homePage.php>
 						<input type=submit value=Home style=display:inline>
 					</a>
-					<a href=/lag/controllers/logout.php>
+					<a href=/controllers/logout.php>
 						<input type=submit value=Logout style=display:inline>
 					</a>
 				</div>

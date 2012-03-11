@@ -12,7 +12,7 @@ body
 	session_start();
 	require_once("../classes/database.class.php");
 	$con=new Database;
-	if ($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
+	if ($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0 || $_SESSION['uname']==$_SESSION['projectName'])
 	{
 		$con->close();
 		header("location:loginwrong.html");

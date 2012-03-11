@@ -59,9 +59,8 @@ if ($con->checkCookie($_SESSION['sessionID'],$_SESSION['projectName'])==0)
 $con->messageDump();
 $con->close();
 require_once("../classes/guide.class.php"); 
-echo "<h1 align=center>Guides Home Page</h1>";
-echo "<a href='../controllers/logout.php'><h3 align='right'><input type='submit' value='Logout'></h3></a>";
-echo "<h3 align=center>Weclome $_SESSION[projectName] Guide</h3>";
+require_once("../classes/common.class.php"); 
+$page=new page("Weclome $_SESSION[projectName] Guide");
 echo "<h3 align = left > Project Contributers <h3>";
 $guide = new Guide($_SESSION["projectName"]);
 $guide->show_members();
