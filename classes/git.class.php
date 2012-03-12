@@ -71,11 +71,11 @@
 			if($_SESSION['uname']!=$_SESSION['projectName'])
 				header("location:/views/loginwrong.html");
 			chdir("/var/www/repos/$_SESSION[projectName]/");
+			exec("git describe --contains --all HEAD",$cur);
 			exec("git checkout $_GET[version]");
 			$this->download();
 			chdir("/var/www/repos/$_SESSION[projectName]");
-			exec("git checkout master");
-			header("location:/views/guide.php");
+			exec("git checkout $cur[0]");
 		}
 		public function download()
 		{
@@ -85,6 +85,22 @@
 			header( "Content-Disposition: attachment; filename=$_SESSION[sessionID].zip" ); 
 			readfile("$_SESSION[sessionID].zip");
 		}
+		public function branch()
+		{
+			if($_SESSION['uname']!=$_SESSION['projectName'])
+				header("location:/views/loginwrong.html");
+			if(!isset($_POST['branch']))
+			{
+				$this->_con->query("INSERT INTO messages VALUES('Field branch name cannot be left empty!!')");
+				header("location:/views/branch.php");
+			}
+			chdir("/var/www/repos/$_SESSION[projectName]/");
+			exec("git checkout -b $_POST[branch] $_POST[version]");
+			$this->_con->query("INSERT INTO messages VALUES('Checked out to branch $_POST[branch] at $_POST[version]')");
+			header("location:/views/guide.php");
+		}
+
+			
 		public function __destruct()
 		{
 			$this->_con->close();

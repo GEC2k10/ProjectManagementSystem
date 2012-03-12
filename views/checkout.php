@@ -33,6 +33,9 @@
 		<a href=../controllers/gitCommands/checkout.php?version=$_GET[version]>\n
 			<input type=submit value='Download This Version' style=height:25px>\n
 		</a>\n
+		<a href=branch.php?version=$_GET[version]>\n
+			<input type=submit value='Create a new branch' style=height:25px>\n
+		</a>\n
 	</font>\n
 	</body>\n
 	</html>\n
