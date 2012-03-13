@@ -66,7 +66,7 @@
 				$this->_con->query("INSERT INTO messages VALUES('Nothing to Commit!!!')");
 			header("location:/views/guide.php");
 		}
-		public function checkout()
+		public function checkoutDownload()
 		{
 			if($_SESSION['uname']!=$_SESSION['projectName'])
 				header("location:/views/loginwrong.html");

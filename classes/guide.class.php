@@ -55,7 +55,7 @@ class Guide
 		echo "Commits So far <br>";
 		if($reply!=0)
 			while($row=mysql_fetch_assoc($reply))
-				echo "<a href=../views/checkout.php?version=$row[Contribution]>$row[Date]<br></a>";
+				echo "<a href=/views/commitDetails.php?version=$row[Contribution]>$row[Date]<br></a>";
 		echo "</div>";
 	}
 	public function show_version()

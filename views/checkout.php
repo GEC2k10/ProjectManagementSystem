@@ -2,40 +2,28 @@
 	session_start();
 	require_once("../classes/database.class.php");
 	require_once("../classes/common.class.php");
-	$page=new page("Commit details");
+	$page=new page("Switch branches");
 	$con=new Database;
 	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
 	{
 		$con->close();
 		header("location:loginwrong.html");
 	}
-	$version=mysql_real_escape_string($_GET['version']);
-	$reply=$con->query("SELECT Date FROM Contributions WHERE Contribution='$version'");
-	$row=mysql_fetch_assoc($reply);
-	chdir("/var/www/repos/$_SESSION[projectName]/");
-	exec("git log $_GET[version]",$out);
-	$commitMessage='';
-	foreach($out as $tmp)
+	chdir("/var/www/repos/$_SESSION[projectName]");
+	exec("git branch -a",$out);
+	echo "<h2>Please select a branch </h2>";
+	echo "<form action=/controllers/gitCommands/checkout.php method=post>";
+	foreach($out as &$tmp)
 	{
-		$tmp=trim($tmp);
-		if($tmp=='EOC')
-			break;
-		$commitMessage=$commitMessage.$tmp."<br>";
+		if($tmp[0]!='*')
+			echo "<input type=radio value=$tmp name=branch checked>$tmp<br>";
+		else
+		{
+			$tmp=substr($tmp,1);
+			echo "&nbsp;&nbsp;<b>$tmp</b>(current)<br>";
+		}
 	}
-	echo "
-		<h2>Commit ID :$_GET[version]</h2>\n
-		<h3>Committed on $row[Date]</h3>\n
-		Commit Message:\n
-		$commitMessage<br>\n
-		<a href=../controllers/gitCommands/checkout.php?version=$_GET[version]>\n
-			<input type=submit value='Download This Version' style=height:25px>\n
-		</a>\n
-		<a href=branch.php?version=$_GET[version]>\n
-			<input type=submit value='Create a new branch' style=height:25px>\n
-		</a>\n
-	</body>\n
-	</html>\n
-	";
+	echo "<input type=submit value='Switch branch'>";
 ?>
 
 
