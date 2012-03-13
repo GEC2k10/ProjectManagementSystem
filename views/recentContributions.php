@@ -1,7 +1,9 @@
 <?php
 	require_once("../classes/database.class.php");
+	require_once("../classes/common.class.php");
 	session_start();
 	$con=new Database;
+	$page=new page("Files in current version");
 	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
 	{
 		$con->close();
@@ -9,14 +11,7 @@
 	}
 	$con->close();
 ?>
-<html>
-<body bgcolor=#cfcfcf>
-<h6 align="right"><a href="../controllers/logout.php">
-<input type="submit" value="Logout" style="display:inline"></a>
-<a href="../controllers/homePage.php"><input type="submit" value="Home" style="display:inline"></a></h6>
-<font face=ubuntu>
-		<h3><u>Files in Current Version</u></h3>
-		<i>
+	<i>
 		<?php
 		exec("find /var/www/repos/$_SESSION[projectName]/  \( ! -regex '.*/\..*' \) -type f ",$row);
 		foreach ($row as &$tmp)
@@ -28,8 +23,6 @@
 			}
 			$con->close();
 		?>
-		</i>
-</div>
-</font>
+	</i>
 </body>
 </html>

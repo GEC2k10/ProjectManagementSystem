@@ -89,10 +89,11 @@
 		{
 			if($_SESSION['uname']!=$_SESSION['projectName'])
 				header("location:/views/loginwrong.html");
-			if(!isset($_POST['branch']))
+			if(strlen($_POST['branch'])==0)
 			{
 				$this->_con->query("INSERT INTO messages VALUES('Field branch name cannot be left empty!!')");
 				header("location:/views/branch.php");
+				exit;
 			}
 			chdir("/var/www/repos/$_SESSION[projectName]/");
 			exec("git checkout -b $_POST[branch] $_POST[version]");
