@@ -37,6 +37,7 @@
 	Email Account details:<br><br>
 	Username <input type=text value=gecgitrepository readonly><br>
 	Password&nbsp <input type=password name=password><br>
+	<input type=hidden value=addUsers name=flag>
 	<input type=submit value='Add Users'>
 	</form>
 	</body>

@@ -98,7 +98,6 @@
 			chdir("/var/www/repos/$_SESSION[projectName]/");
 			exec("git checkout -b $_POST[branch] $_POST[version]");
 			$this->_con->query("INSERT INTO messages VALUES('Checked out to branch $_POST[branch] at $_POST[version]')");
-			header("location:/views/guide.php");
 		}
 
 			
