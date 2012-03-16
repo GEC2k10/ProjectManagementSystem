@@ -42,7 +42,7 @@
 		Download
 	</div>
 	<div style='top:420px;position:absolute'>
-		<a href=../views/recentContributions.php>View Files in Current Version</a><br>
+		<a href=/views/currentVersion.php>View Files in Current Version</a><br>
 		<a href=../views/changePassword.php>Change Account Password</a>
 	</div>
 	<div style='bottom:0px;position:absolute'>

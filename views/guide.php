@@ -67,5 +67,6 @@ $guide->show_members();
 $guide->show_commit_button();
 $guide->show_commits();
 $guide->show_version();
+
 </script>
 </html>

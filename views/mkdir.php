@@ -24,10 +24,10 @@ body
 <input type="text" name="dirName"><br>
 Select target:<br>
 <?php
-	exec("find /var/www/repos/$_SESSION[projectName]/  \( ! -regex '.*/\..*' \) -type d ",$out);
+	exec("find /var/www/repos/$_SESSION[projectName]/$_SESSION[projectName]/ \( ! -regex '.*/\..*' \) -type d ",$out);
 	foreach ($out as &$tmp)
 	{
-		$sub=substr($tmp,15+strlen($_SESSION['projectName']));
+		$sub=substr($tmp,16+2*strlen($_SESSION['projectName']));
 		if(strcmp($out[0],$tmp)==0)
 			echo "<input type='radio' name='directory' value='$tmp' CHECKED/>$sub<br>";
 		else

@@ -9,7 +9,7 @@
 		$con->close();
 		header("location:loginwrong.html");
 	}
-	chdir("/var/www/repos/$_SESSION[projectName]");
+	chdir("/var/www/repos/$_SESSION[projectName]/");
 	exec("git branch -a",$out);
 	echo "<h2>Please select a branch </h2>";
 	echo "<form action=/controllers/gitCommands/checkout.php method=post>";
