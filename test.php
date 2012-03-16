@@ -1,5 +1,5 @@
 <?php
-	mysql_connect("localhost","root","password");
-	mysql_select_db("GitRepo");
-	header("location:test3.php");
+	include("config.php");
+	echo $REPO;
+	echo $GIT_ROOT;
 ?>

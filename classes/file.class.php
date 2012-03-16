@@ -1,4 +1,5 @@
 <?php
+include("/config.php");
 class File
 {
 	private $_handle,$_filename,$_con;
@@ -37,7 +38,7 @@ class File
 	{
 		session_start();
 		$name=substr($filename,15+strlen($_SESSION['projectName']));
-		if (trim($filename)==trim("/var/www/repos/$_SESSION[projectName]/"))
+		if (trim($filename)==trim($PROJECT_ROOT))
 		{
 			chdir($filename);
 			$this->_con->query("INSERT INTO messages VALUES('$name deleted succesfully!!!')");
