@@ -6,7 +6,7 @@
  *  login.class.php
  */
 
-
+include("/config.php");
 class Login
 {
   private $_uname,$_passwd,$_projectName,$_row,$_con;
@@ -24,7 +24,7 @@ class Login
     if($reply==0)
     { 
        $this->_con->close();
-       header("Location:/lag/views/loginwrong.html");
+       header("Location:../views/loginwrong.html");
        exit;
     }
     $this->_row = mysql_fetch_assoc($reply);
@@ -48,7 +48,7 @@ class Login
     {
 		if($this->_row['sessionID']=='0')
 		{
-			chdir("/var/www/repos/$this->_projectName/");
+			chdir($REPO."$this->_projectName/");
 			system("git init");
 		}
         $this->_sessionID = sha1(date("D M j G:i:s T Y"));
@@ -79,7 +79,7 @@ class Login
 		$query="UPDATE Accounts SET sessionID='$this->_sessionID' where uname='$this->_uname'";
 		$this->_con->query($query);
       	$this->_con->close();
-		header("Location:/lag/admin/adminHome.php");
+		header("Location:../admin/adminHome.php");
 	}
    }  
 };
