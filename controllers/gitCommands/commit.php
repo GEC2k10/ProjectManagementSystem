@@ -1,5 +1,6 @@
 <?php
 	require_once("../../classes/database.class.php");
+	include("../../config.php");
 	session_start();
 	$con=new Database;
 	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname']) == '0')
@@ -8,7 +9,7 @@
 		header("location:../../views/loginwrong.html");
 	}
 	$message=$_POST['commitMessage']."\nEOC";
-	chdir("/var/www/repos/$_POST[projectName]");  // project name is passed to this script
+	chdir($GIT_ROOT);  // project name is passed to this script
 	exec("git init ");
 	exec("git add * ");
 	exec("git commit -am '$message'",$a); // commits with an message 'message' 
