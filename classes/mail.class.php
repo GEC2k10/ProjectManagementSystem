@@ -3,11 +3,11 @@
 	{
 		private $_from,$_to,$_body,$_subject,$_username,$_password;
 		private $_con;
-		public function __construct($body_id)
+		public function __construct($body_id=0,$uname=0,$passwd=0)
 		{
 			$this->_from="APTS <gecgitrepository@gmail.com>";
 			$this->_username="gecgitrepository@gmail.com";
-			$this->_password="";
+			$this->_password="importre";
 			session_start();
 			require_once("database.class.php");
 			require_once("Mail.php");
@@ -39,7 +39,7 @@ Also please download the current version from the website.Any further developmen
 must be centered on that version.";
 			if($body_id==1)
 			{
-				$this->_body=sprintf($invitation,$_POST['uname'],$_POST['passwd']);
+				$this->_body=sprintf($invitation,$uname,$passwd);
 				$this->_subject="Academic Project Tracker account details";
 			}
 			else if($body_id==2)

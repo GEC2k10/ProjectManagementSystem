@@ -5,7 +5,7 @@
 	if ($con->checkCookie($_SESSION['sessionID'],'admin')==0)
 	{
 		$con->close();
-		header("Location:../../views/login.html");		
+		header("Location:/views/loginwrong.html");		
 	}
 	else
 	{
@@ -16,6 +16,6 @@
 	$con->query("UPDATE Accounts SET passwd=SHA1('$passwd') WHERE uname='$uname'");
 	$con->close();
 	}
-	header("location:../adminHome.php");
+	header("location:/admin/views/adminHome.php");
 ?>
 
