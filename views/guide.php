@@ -30,15 +30,6 @@ session_start();
 		margin-top:-350px;
 	}
 
-	.listCommits
-	{
-		border:3px solid black;
-		width:200px;
-		background-color:#afafaf;
-		margin-left:800px;
-		margin-top:-350px;
-	}
-
 </style>
 
 </head>
@@ -62,8 +53,6 @@ echo "<h3> Project Contributers </h3>";
 $guide = new Guide($_SESSION["projectName"]);
 $guide->show_members();
 $guide->show_commit_button();
-$guide->show_commits();
-$guide->show_version();
-
+$guide->show_panel_button()
 </script>
 </html>

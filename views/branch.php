@@ -10,7 +10,7 @@
 	$con->close();
 	echo "
 	<h2>Branching $_SESSION[projectName]</h2>
-	<h3>Branch point $_GET[version]</h3>
+	<h3>Branch point $_SESSION[version]</h3>
 	Branching switches the current version into a previous version and<br>
 	further development will be made to that version.However there is<br>
 	always an option to go back to the previous branch.<br>
@@ -18,7 +18,7 @@
 	<div style=top:250;left:50;position:absolute>
 		<h3>Please Enter a Branch Name</h3>
 		<input type=text name=branch><br><br>
-		<input type=hidden name=version value=$_GET[version]>
+		<input type=hidden name=version value=$_SESSION[version]>
 		<input type=submit value='Create Branch'>
 	</div>
 	</form>

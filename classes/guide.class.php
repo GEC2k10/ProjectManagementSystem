@@ -47,22 +47,11 @@ class Guide
 		echo "</form>\n";
 	   	echo"</div>\n";
 	}
-	public function show_commits()
-	{
-		$reply=$this->_con->query("
-		SELECT Date,Contribution FROM Contributions WHERE uname='$this->_projectName'");
-		echo "<div class=listCommits>";
-		echo "Commits So far <br>";
-		if($reply!=0)
-			while($row=mysql_fetch_assoc($reply))
-				echo "<a href=/views/commitDetails.php?version=$row[Contribution]>$row[Date]<br></a>";
-		echo "</div>";
-	}
-	public function show_version()
+	public function show_panel_button()
 	{
 		echo "
-		<a href=/views/currentVersion.php style=bottom:50px;position:absolute> 
-		<input type=submit value='View Current Version' style=height:25px>
+		<a href=/views/guidePanel.php style=top:150px;right:50px;position:absolute> 
+		<input type=submit value='Control Panel' style=height:55px>
 		</a>";
 	}
 
