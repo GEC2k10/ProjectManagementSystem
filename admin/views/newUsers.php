@@ -1,15 +1,9 @@
 <?php
 	session_start();
-	require_once("../../classes/database.class.php");
 	require_once("../../classes/common.class.php");
-	$con=new Database;
+	if($_SESSION['uname']!='admin')
+		header("Location:views/loginwrong.html");		
 	$page=new page("Add New Users");
-	if($con->checkCookie($_SESSION['sessionID'],'admin')==0)
-	{
-		$con->close();
-		header("Location:/views/loginwrong.html");		
-	}
-	$con->close();
 	echo "
 	<body bgcolor=#cfcfcf style='font-family:ubuntu'>
 	<form action=/admin/controllers/newUsers.php method=post>

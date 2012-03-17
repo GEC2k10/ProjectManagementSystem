@@ -1,15 +1,9 @@
 <?php
-	require_once("../classes/database.class.php");
 	require_once("../classes/common.class.php");
 	session_start();
-	$con=new Database;
 	$page=new page("Files in current version");
-	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
-	{
-		$con->close();
-		header("location:loginwrong.html");
-	}
-	$con->close();
+	if (!isset($_SESSION['uname']))
+		header("location:/views/loginwrong.html");
 ?>
 	<i>
 		<?php
@@ -21,7 +15,6 @@
 				<a href=../views/showfile.php?filename=$file>";
 				echo substr($tmp,16+2*strlen($_SESSION['projectName']))."<br></a>";
 			}
-			$con->close();
 		?>
 	</i>
 </body>

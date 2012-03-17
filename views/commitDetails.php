@@ -4,11 +4,8 @@
 	require_once("../classes/common.class.php");
 	$page=new page("Commit details");
 	$con=new Database;
-	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
-	{
-		$con->close();
-		header("location:loginwrong.html");
-	}
+	if (!isset($_SESSION['uname']) || $_SESSION['uname']!=$_SESSION['projectName'])
+		header("location:/views/loginwrong.html");
 	$version=mysql_real_escape_string($_GET['version']);
 	$reply=$con->query("SELECT Date FROM Contributions WHERE Contribution='$version'");
 	$row=mysql_fetch_assoc($reply);

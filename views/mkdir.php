@@ -1,22 +1,11 @@
 <html>
 <head>
-<link rel="shortcut icon" href="icons/mkdirIcon.png">
-<style type="css/text">
-body
-{margin-left:1000px;}
-</style>
 <?php
 	session_start();
-	require_once("../classes/database.class.php");
 	require_once("../classes/common.class.php");
 	$page=new page("Create Directory");
-	$con=new Database;
-	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0 || ($_SESSION['uname']==$_SESSION['projectName']))
-	{
-		$con->close();
-		header("location:loginwrong.html");
-	}
-	$con->close();
+	if (!isset($_SESSION['uname']) || $_SESSION['uname']==$_SESSION['projectName'])
+		header("location:/views/loginwrong.html");
 ?>
 <form action="../controllers/mkdir.php" method="post" >
 <fieldset>

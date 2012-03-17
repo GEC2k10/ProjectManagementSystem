@@ -8,8 +8,7 @@
 			session_start();
 			require_once("database.class.php");
 			$this->_con=new Database;
-			$token=$_SESSION['uname'];
-			if($this->_con->checkCookie($_SESSION['sessionID'],$token)==0)
+			if(!isset($_SESSION['uname']))
 			{
 				$this->_con->close();
 				header("location:/views/loginwrong.html");
@@ -79,11 +78,12 @@
 		}
 		public function download()
 		{
-			chdir("/var/www/repos/");
-			exec("zip -r ../downloads/$_SESSION[sessionID].zip $_SESSION[projectName]");
+			chdir("/var/www/repos/$_SESSION[projectName]/");
+			exec("zip -r /var/www/downloads/$_SESSION[uname].zip $_SESSION[projectName]");
 			chdir("/var/www/downloads/");
-			header( "Content-Disposition: attachment; filename=$_SESSION[sessionID].zip" ); 
-			readfile("$_SESSION[sessionID].zip");
+			header( "Content-Disposition: attachment; filename=$_SESSION[uname].zip" ); 
+			readfile("$_SESSION[uname].zip");
+			exec("rm $_SESSION[uname].zip");
 		}
 		public function branch()
 		{

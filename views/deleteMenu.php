@@ -2,11 +2,8 @@
 	session_start();
 	require_once("../classes/database.class.php");
 	$con=new Database;
-	if($con->CheckCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
-	{
-		$con->close();
-		header("location:loginwrong.html");
-	}
+	if (!isset($_SESSION['uname']) || $_SESSION['uname']==$_SESSION['projectName'])
+		header("location:/views/loginwrong.html");
 	$con->messageDump();
 	$con->close();
 	echo "

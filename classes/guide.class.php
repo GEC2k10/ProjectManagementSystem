@@ -61,7 +61,7 @@ class Guide
 	public function show_version()
 	{
 		echo "
-		<a href=../views/recentContributions.php style=bottom:50px;position:absolute> 
+		<a href=/views/currentVersion.php style=bottom:50px;position:absolute> 
 		<input type=submit value='View Current Version' style=height:25px>
 		</a>";
 	}

@@ -4,12 +4,8 @@
 	require_once("../classes/common.class.php");
 	$con=new Database;
 	$page=new page("Modify Project");
-
-	if ($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0 || $_SESSION['uname']==$_SESSION['projectName'])
-	{
-		$con->close();
-		header("location:loginwrong.html");
-	}
+	if (!isset($_SESSION['uname']) || $_SESSION['uname']==$_SESSION['projectName'])
+		header("location:/views/loginwrong.html");
 	$con->messageDump();
 	$con->close();
 ?>

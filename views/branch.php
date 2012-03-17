@@ -4,11 +4,8 @@
 	session_start();
 	$con=new Database;
 	$page=new page("Create new branch");
-	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['projectName'])==0)
-	{
-		$con->close();
+	if (!isset($_SESSION['uname']) || $_SESSION['uname']!=$_SESSION['projectName'])
 		header("location:/views/loginwrong.html");
-	}
 	$con->messageDump();
 	$con->close();
 	echo "

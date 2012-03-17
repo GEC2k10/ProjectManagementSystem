@@ -10,7 +10,6 @@
 class Login
 {
   private $_uname,$_passwd,$_projectName,$_row,$_con;
-  private $_sessionID;
   public function __construct($uname,$passwd)
   {
   	require_once("database.class.php");
@@ -18,7 +17,7 @@ class Login
     $this->_uname=mysql_real_escape_string(trim(substr($uname,0,30)));
     $this->_passwd=sha1($passwd);
     $query=sprintf("
-	SELECT uname,projectName,sessionID FROM Accounts WHERE uname='%s' AND passwd='%s'"
+	SELECT uname,projectName FROM Accounts WHERE uname='%s' AND passwd='%s'"
 	,$this->_uname,$this->_passwd);
     $reply=$this->_con->query($query);
     if($reply==0)
@@ -46,40 +45,20 @@ class Login
   {
     if( $this->is_guide())
     {
-		if($this->_row['sessionID']=='0')
-		{
-			chdir("/var/www/repos/$this->_projectName/");
-			system("git init");
-		}
-        $this->_sessionID = sha1(date("D M j G:i:s T Y"));
-        $_SESSION['sessionID']=$this->_sessionID;
         $_SESSION['uname']=$this->_uname;
 		$_SESSION['projectName']=$this->_projectName;
-		$query="UPDATE Accounts SET sessionID='$this->_sessionID' where uname='$this->_uname'";
-		$this->_con->query($query);
-      	$this->_con->close();
-		header("Location:../views/guide.php");  
+		header("Location:/views/guide.php");  
 		exit;
     }
     else if($this->is_user())
     {
-        $this->_sessionID = sha1(date("D M j G:i:s T Y"));
-        $_SESSION['sessionID']=$this->_sessionID;
         $_SESSION['uname']=$this->_uname;
 		$_SESSION['projectName']=$this->_projectName;
-		$query="UPDATE Accounts SET sessionID='$this->_sessionID' where uname='$this->_uname'";
-		$this->_con->query($query);
-      	$this->_con->close();
-		header("Location:homePage.php");
+		header("Location:/controllers/homePage.php");
     }
     else if($this->is_admin()) 
 	{
-        $this->_sessionID = sha1(date("D M j G:i:s T Y"));
-        $_SESSION['sessionID']=$this->_sessionID;
-		$_SESSION['head_flag']='admin';
-		$query="UPDATE Accounts SET sessionID='$this->_sessionID' where uname='$this->_uname'";
-		$this->_con->query($query);
-      	$this->_con->close();
+		$_SESSION['uname']='admin';
 		header("Location:/admin/views/adminHome.php");
 	}
    }  

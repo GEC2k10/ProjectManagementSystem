@@ -51,11 +51,8 @@ body {
 <script language="php">
 require_once("../classes/database.class.php");
 $con=new Database;
-if ($con->checkCookie($_SESSION['sessionID'],$_SESSION['projectName'])==0)
-{
-	$con->close();
-	header("Location:../views/loginwrong.html");
-}
+if (!isset($_SESSION['uname']) || $_SESSION['uname']!=$_SESSION['projectName'])
+	header("location:/views/loginwrong.html");
 $con->messageDump();
 $con->close();
 require_once("../classes/guide.class.php"); 

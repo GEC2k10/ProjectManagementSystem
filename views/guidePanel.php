@@ -4,8 +4,6 @@
 	session_start();
 	$con=new Database;
 	$page=new page("Guide's Control Panel");
-	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['projectName'])==0)
-	{
-		$con->close();
-		header("/views/loginwrong.html");
-	}
+	if (!isset($_SESSION['uname']) || $_SESSION['uname']!=$_SESSION['projectName'])
+		header("location:/views/loginwrong.html");
+?>

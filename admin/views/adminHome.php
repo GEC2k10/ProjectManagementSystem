@@ -2,11 +2,8 @@
 	session_start();
 	require_once("../../classes/database.class.php");
 	$con=new Database;
-	if($con->checkCookie($_SESSION['sessionID'],'admin')==0)
-	{
-		$con->close();
+	if($_SESSION['uname']!='admin')
 		header("Location:/views/loginwrong.html");		
-	}
 	else
 	{
 	$con->messageDump();

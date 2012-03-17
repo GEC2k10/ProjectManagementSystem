@@ -3,11 +3,8 @@
 	require_once("../../classes/database.class.php");
 	require_once("../../classes/mail.class.php");
 	$con=new Database;
-	if ($con->checkCookie($_SESSION['sessionID'],'admin')==0)
-	{
-		$con->close();
+	if($_SESSION['uname']!='admin')
 		header("Location:/views/loginwrong.html");		
-	}
 	$query="INSERT INTO Accounts VALUES('%s','%s','%s','%s','%s','')";
 	for($i=0;$i<10;$i++)
 	{

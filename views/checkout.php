@@ -1,14 +1,9 @@
 <?php
 	session_start();
-	require_once("../classes/database.class.php");
 	require_once("../classes/common.class.php");
+	if (!isset($_SESSION['uname']) || $_SESSION['uname']!=$_SESSION['projectName'])
+		header("location:/views/loginwrong.html");
 	$page=new page("Switch branches");
-	$con=new Database;
-	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
-	{
-		$con->close();
-		header("location:loginwrong.html");
-	}
 	chdir("/var/www/repos/$_SESSION[projectName]/");
 	exec("git branch -a",$out);
 	echo "<h2>Please select a branch </h2>";

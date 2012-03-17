@@ -7,18 +7,11 @@
 	require_once("../classes/common.class.php");
 	$con = new Database();
 	session_start();
-	if ($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
-	{
-		$con->close();
-		header("location:../views/loginwrong.html");
-	}
-	else if($_SESSION['uname']==$_SESSION['projectName'])
-	{
-		$con->close();
-		header("location:../views/guide.php");
-	}
+	if (!isset($_SESSION['uname']) || $_SESSION['uname']=='admin')
+		header("location:/views/loginwrong.html");
+	if($_SESSION['uname']==$_SESSION['projectName'])
+		header("location:/views/guide.php");
 	$con->messageDump();
-	$_SESSION['message']=''; 
 	?>
 						<?php $page=new page("Welcome $_SESSION[uname]");?>
 		<font size="6">
