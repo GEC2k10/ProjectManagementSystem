@@ -10,6 +10,7 @@ body
 <title>Create Directory</title>
 <?php
 	session_start();
+	include("../config.php");
 	require_once("../classes/database.class.php");
 	$con=new Database;
 	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
@@ -27,7 +28,7 @@ body
 Enter Directory name:<input type="text" name="dirName"><br>
 Select target:<br>
 <?php
-	exec("find /var/www/repos/$_SESSION[projectName]/  \( ! -regex '.*/\..*' \) -type d ",$out);
+	exec("find ".$PROJECT_ROOT."  \( ! -regex '.*/\..*' \) -type d ",$out);
 	foreach ($out as &$tmp)
 	{
 		$sub=substr($tmp,15+strlen($_SESSION['projectName']));

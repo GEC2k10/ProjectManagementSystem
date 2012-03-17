@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	include("../config.php");
 	require_once("../classes/database.class.php");
 	$con=new Database;
 	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
@@ -9,7 +10,7 @@
 	}
 	$reply=$con->query("SELECT Date FROM Contributions WHERE Contribution='$_GET[version]'");
 	$row=mysql_fetch_assoc($reply);
-	chdir("/var/www/repos/$_SESSION[projectName]/");
+	chdir($GIT_ROOT);
 	exec("git log $_GET[version]",$out);
 	$commitMessage='';
 	foreach($out as $tmp)
@@ -38,9 +39,3 @@
 	</html>\n
 	";
 ?>
-
-
-
-
-
-

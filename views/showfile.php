@@ -13,6 +13,7 @@ body {
 </form>
 <?php
 	session_start();
+	include("../config.php");
 	require_once("../classes/database.class.php");
 	$con=new Database;
 	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
@@ -23,7 +24,7 @@ body {
 	$con->close();
 	require_once("../classes/file.class.php");
 	echo "<br/><h3>File :".$_GET['filename']."</h3>";
-	$file = new File("/var/www/repos/".$_GET['filename']);
+	$file = new File($PROJECT_ROOT.$_GET['filename']);
 	$file->download_button();
 	$file->show_file();
 	$file->download_button();

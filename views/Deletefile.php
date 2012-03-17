@@ -6,6 +6,7 @@
 <title>Delete</title>
 <?php
 	session_start();
+	include("../config.php");
 	require_once("../classes/database.class.php");
 	$con=new Database;
 	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
@@ -24,14 +25,14 @@
 <fieldset>
 <?php
 	if($_POST['mode']==1)
-		exec("find /var/www/repos/$_SESSION[projectName]/  \( ! -regex '.*/\..*' \) -type d",$out);
+		exec("find $PROJECT_ROOT  \( ! -regex '.*/\..*' \) -type d",$out);
 	else if($_POST['mode']==2)
-		exec("find /var/www/repos/$_SESSION[projectName]/  \( ! -regex '.*/\..*' \) -type f",$out);
+		exec("find $PROJECT_ROOT  \( ! -regex '.*/\..*' \) -type f",$out);
 	else 
-		exec("find /var/www/repos/$_SESSION[projectName]/  \( ! -regex '.*/\..*' \) ",$out);
+		exec("find $PROJECT_ROOT   \( ! -regex '.*/\..*' \) ",$out);
 	foreach($out as &$tmp)
 	{
-		$sub=substr($tmp,15+strlen($_SESSION['projectName']));
+		$sub=substr($tmp,strlen($PROJECT_ROOT));
 		if(strcmp($tmp,$out[0])==0)
 			echo "<input type=checkbox name='files[]' value='$tmp' CHECKED/>$sub<br>\n";
 		else
