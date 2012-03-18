@@ -5,7 +5,7 @@ require_once("../classes/common.class.php");
 	if (!isset($_SESSION['uname']) || $_SESSION['uname']!=$_SESSION['projectName'])
 		header("location:/views/loginwrong.html");
 	$page=new page("Switch branches");
-	chdir("/var/www/repos/$_SESSION[projectName]/");
+	chdir($GIT_ROOT);
 	exec("git branch -a",$out);
 	echo "<h2>Please select a branch </h2>";
 	echo "<form action=/controllers/gitCommands/checkout.php method=post>";

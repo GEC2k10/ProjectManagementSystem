@@ -38,10 +38,11 @@
 Select target:</i></u><br>
 
 <?php
-	exec("find /var/www/repos/$_SESSION[projectName]/$_SESSION[projectName]/  \( ! -regex '.*/\..*' \) -type d ",$out);
+	include("../config.php");
+	exec("find $PROJECT_ROOT  \( ! -regex '.*/\..*' \) -type d ",$out);
 	foreach ($out as &$tmp)
 	{
-		$sub=substr($tmp,16+2*strlen($_SESSION['projectName']));
+		$sub=substr($tmp,strlen($PROJECT_ROOT));
 		if(strcmp($tmp,$out[0])==0)
 			echo "<input type='radio' name='directory' value='$tmp' CHECKED/>$sub<br>";
 		else

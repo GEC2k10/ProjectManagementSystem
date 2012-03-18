@@ -1,11 +1,12 @@
 <?php
 	session_start();
+	include("../config.php");
 	require_once("../classes/common.class.php");
 	require_once("../classes/file.class.php");
 	if (!isset($_SESSION['uname']))
 		header("location:/views/loginwrong.html");
-	$page=new page(substr($_GET['filename'],16+2*strlen($_SESSION['projectName'])));
-	$file = new File("/var/www/repos/".$_GET['filename']);
+	$page=new page(substr($_GET['filename'],strlen($PROJECT_ROOT)));
+	$file = new File($GIT_ROOT.$_GET['filename']);
 	$file->download_button();
 	$file->show_file();
 	$file->download_button();

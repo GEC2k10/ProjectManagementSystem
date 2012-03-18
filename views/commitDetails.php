@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	include("../config.php");
 	require_once("../classes/database.class.php");
 	require_once("../classes/common.class.php");
 	$page=new page("Commit details");
@@ -9,7 +10,7 @@
 	$version=mysql_real_escape_string($_SESSION['version']);
 	$reply=$con->query("SELECT Date FROM Contributions WHERE Contribution='$version'");
 	$row=mysql_fetch_assoc($reply);
-	chdir("/var/www/repos/$_SESSION[projectName]/");
+	chdir($GIT_ROOT);
 	exec("git log $_GET[version]",$out);
 	$commitMessage='';
 	foreach($out as $tmp)
