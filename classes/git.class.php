@@ -106,6 +106,7 @@
 			chdir("/var/www/repos/$_SESSION[projectName]");
 			exec("git checkout $_POST[branch]");
 			$this->_con->query("INSERT INTO messages VALUES('Checked out to branch $_POST[branch]')");
+			header("location:/views/guide.php");
 		}
 
 		public function __destruct()
