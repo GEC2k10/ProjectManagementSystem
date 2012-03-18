@@ -1,4 +1,5 @@
-<?php	
+<?php
+include("../config.php");
 	class git
 	{
 		private $_con,$_student;
@@ -69,18 +70,18 @@
 		{
 			if($_SESSION['uname']!=$_SESSION['projectName'])
 				header("location:/views/loginwrong.html");
-			chdir("/var/www/repos/$_SESSION[projectName]/");
+			chdir($GIT_ROOT);
 			exec("git describe --contains --all HEAD",$cur);
 			exec("git checkout $_GET[version]");
 			$this->download();
-			chdir("/var/www/repos/$_SESSION[projectName]");
+			chdir($GIT_ROOT);
 			exec("git checkout $cur[0]");
 		}
 		public function download()
 		{
-			chdir("/var/www/repos/$_SESSION[projectName]/");
-			exec("zip -r /var/www/downloads/$_SESSION[uname].zip $_SESSION[projectName]");
-			chdir("/var/www/downloads/");
+			chdir($GIT_ROOT);
+			exec("zip -r $DOWNLOAD$_SESSION[uname].zip $_SESSION[projectName]");
+			chdir($DOWNLOAD);
 			header( "Content-Disposition: attachment; filename=$_SESSION[uname].zip" ); 
 			readfile("$_SESSION[uname].zip");
 			exec("rm $_SESSION[uname].zip");
@@ -95,7 +96,7 @@
 				header("location:/views/branch.php");
 				exit;
 			}
-			chdir("/var/www/repos/$_SESSION[projectName]/");
+			chdir($GIT_ROOT);
 			exec("git checkout -b $_POST[branch] $_POST[version]");
 			$this->_con->query("INSERT INTO messages VALUES('Checked out to branch $_POST[branch] at $_POST[version]')");
 		}
@@ -103,7 +104,7 @@
 		{
 			if($_SESSION['uname']!=$_SESSION['projectName'])
 				header("location:/views/loginwrong.html");
-			chdir("/var/www/repos/$_SESSION[projectName]");
+			chdir($GIT_ROOT);
 			exec("git checkout $_POST[branch]");
 			$this->_con->query("INSERT INTO messages VALUES('Checked out to branch $_POST[branch]')");
 		}
