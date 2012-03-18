@@ -97,8 +97,8 @@ include("../config.php");
 				exit;
 			}
 			chdir($GIT_ROOT);
-			exec("git checkout -b $_POST[branch] $_POST[version]");
-			$this->_con->query("INSERT INTO messages VALUES('Checked out to branch $_POST[branch] at $_POST[version]')");
+			exec("git checkout -b $_POST[branch] $_POST[version]",$a);
+			$this->_con->query("INSERT INTO messages VALUES('Checked out to branch $_POST[branch] at $_POST[version] $a[1]')");
 		}
 		public function checkout()
 		{
