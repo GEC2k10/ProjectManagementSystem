@@ -6,7 +6,7 @@
  *  login.class.php
  */
 
-
+include("/config.php");
 class Login
 {
   private $_uname,$_passwd,$_projectName,$_row,$_con;

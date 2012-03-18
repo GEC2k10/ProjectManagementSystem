@@ -7,13 +7,14 @@
 ?>
 	<i>
 		<?php
-		exec("find /var/www/repos/$_SESSION[projectName]/$_SESSION[projectName]/  \( ! -regex '.*/\..*' \) -type f ",$row);
+		include("../config.php");
+		exec("find $PROJECT_ROOT \( ! -regex '.*/\..*' \) -type f ",$row);
 		foreach ($row as &$tmp)
 			{
-				$file=urlencode(substr($tmp,15));
+				$file=urlencode(substr($tmp,strlen($GIT_ROOT)));
     			echo "
 				<a href=../views/showfile.php?filename=$file>";
-				echo substr($tmp,16+2*strlen($_SESSION['projectName']))."<br></a>";
+				echo substr($tmp,strlen($PROJECT_ROOT))."<br></a>";
 			}
 		?>
 	</i>

@@ -2,6 +2,7 @@
 	require_once("../classes/database.class.php");
 	require_once("../classes/common.class.php");
 	session_start();
+	include("../config.php");
 	$con=new Database;
 	$page=new page("Files in current version");
 	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
@@ -13,13 +14,13 @@
 ?>
 	<i>
 		<?php
-		exec("find /var/www/repos/$_SESSION[projectName]/  \( ! -regex '.*/\..*' \) -type f ",$row);
+		exec("find $PROJECT_ROOT \( ! -regex '.*/\..*' \) -type f ",$row);
 		foreach ($row as &$tmp)
 			{
-				$file=urlencode(substr($tmp,15));
+				$file=urlencode(substr($tmp,strlen($PROJECT_ROOT)));
     			echo "
 				<a href=../views/showfile.php?filename=$file>";
-				echo substr($tmp,15+strlen($_SESSION['projectName']))."<br></a>";
+				echo substr($tmp,strlen($PROJECT_ROOT))."<br></a>";
 			}
 			$con->close();
 		?>

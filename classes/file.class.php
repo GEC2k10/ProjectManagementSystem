@@ -1,4 +1,5 @@
 <?php
+include("../config.php");
 class File
 {
 	private $_handle,$_filename,$_con;
@@ -36,8 +37,8 @@ class File
 	public function Delete($filename)
 	{
 		session_start();
-		$name=substr($filename,15+strlen($_SESSION['projectName']));
-		if (trim($filename)==trim("/var/www/repos/$_SESSION[projectName]/"))
+		$name=substr($filename,strlen($PROJECT_ROOT));
+		if (trim($filename)==trim($PROJECT_ROOT))
 		{
 			chdir($filename);
 			$this->_con->query("INSERT INTO messages VALUES('$name deleted succesfully!!!')");

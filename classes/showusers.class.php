@@ -5,6 +5,7 @@ class ShowUsers
 	private $_memberName,$_query,$_files,$_link,$_temp,$_dates;
 	public function __construct($member)
 	{
+	include("../config.php");
     	$this->_memberName = $member;
 		require_once("database.class.php");
     	$this->_con = new Database;
@@ -14,7 +15,7 @@ class ShowUsers
 		$this->_con->close();
 		while($this->_rows = mysql_fetch_array($this->_reply))
 	    {
-			$this->_files[] = substr($this->_rows['Contribution'],15);  /* File name field of user table */  
+			$this->_files[] = substr($this->_rows['Contribution'],strlen($PROJECT_ROOT));  /* File name field of user table */  
 			$this->_dates[] = $this->_rows['Date'];       /* Date field */
 	    }  
     	$this->_temp ="<a href='../views/showfile.php?filename=%s&uname=%s'>%s</a>\n";

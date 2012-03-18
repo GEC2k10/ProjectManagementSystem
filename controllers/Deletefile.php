@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("/var/www/lag/classes/file.class.php");
+require_once("../classes/file.class.php");
 $files=$_POST['files'];
 foreach ($files as &$tmp)
 {

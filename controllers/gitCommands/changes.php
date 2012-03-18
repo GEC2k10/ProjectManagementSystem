@@ -5,6 +5,7 @@ Modified Files in Current Version<br/>
 </font>
 <font face=ubuntu >
 <?php 
+	include("../../config.php");
 	session_start();
 	require_once("../../classes/database.class.php");
 	$con=new Database;
@@ -14,8 +15,7 @@ Modified Files in Current Version<br/>
 		header("location:../../../views/loginwrong.html");
 	}
 	$con->close();
-	$repo="/var/www/repos/".$_SESSION['projectName'];
-	chdir($repo);
+	chdir($GIT_ROOT);
 	echo exec("git diff --name-only");
 ?>
 </font>
