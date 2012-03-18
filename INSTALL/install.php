@@ -1,0 +1,18 @@
+<?php
+	$file=fopen("$_SERVER[DOCUMENT_ROOT]/config.php","w");
+	$content='
+	<?php
+		session_start();
+		$REPO="%s";
+		$GIT_ROOT=$REPO.$_SESSION[\'projectName\']."/";
+		$PROJECT_ROOT=$REPO.$_SESSION[\'projectName\']."/".$_SESSION[\'projectName\']."/";
+		$DOWNLOAD="/var/www/downloads";
+		$DB_SERVER="localhost";
+		$DB_USER="%s";
+		$DB_PASSWORD="%s";
+	?>
+	';
+	fwrite($file,sprintf($content,$_POST["REPO_ROOT"],$_POST['DB_USER'],$_POST['DB_PASSWORD']));
+	fclose($file);
+	header("location:/");
+?>
