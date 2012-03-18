@@ -4,32 +4,16 @@
 	</head>
 	<?php
 	require_once("../classes/database.class.php");
+	require_once("../classes/common.class.php");
 	$con = new Database();
 	session_start();
-	if ($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
-	{
-		$con->close();
-		header("location:../views/loginwrong.html");
-	}
-	else if($_SESSION['uname']==$_SESSION['projectName'])
-	{
-		$con->close();
-		header("location:../views/guide.php");
-	}
+	if (!isset($_SESSION['uname']) || $_SESSION['uname']=='admin')
+		header("location:/views/loginwrong.html");
+	if($_SESSION['uname']==$_SESSION['projectName'])
+		header("location:/views/guide.php");
 	$con->messageDump();
-	echo "<title>Homepage of $_SESSION[uname]</title>";
-	$_SESSION['message']=''; 
 	?>
-	<body bgcolor=#cfcfcf>
-		<font face='Ubuntu'>
-			<h1>
-				<center>
-						Welcome <?php echo $_SESSION['uname'];?>
-				</center>
-			</h1>
-			<form method='post' action='logout.php' align='right'>
-				<input type='submit' value='Logout'>
-			</form>
+						<?php $page=new page("Welcome $_SESSION[uname]");?>
 		<font size="6">
 			Project name :<?php echo  $_SESSION['projectName']; ?>
 		</font><br><br>
@@ -43,8 +27,7 @@
 				<input type=image src=../views/icons/download.png value='Download all files'><br>
 			</div>
 		</form>
-	</font>
-	<font size='4' face='ubuntu'>
+	<font size='4'>
 	<div style='top:360px;left:90px;position:absolute'>
 		Modify Project	
 	</div>
@@ -52,7 +35,7 @@
 		Download
 	</div>
 	<div style='top:420px;position:absolute'>
-		<a href=../views/recentContributions.php>View Files in Current Version</a><br>
+		<a href=/views/currentVersion.php>View Files in Current Version</a><br>
 		<a href=../views/changePassword.php>Change Account Password</a>
 	</div>
 	<div style='bottom:0px;position:absolute'>

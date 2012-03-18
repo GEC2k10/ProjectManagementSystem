@@ -1,12 +1,9 @@
 <?php
 	session_start();
 	require_once("../classes/database.class.php");
-	$con=new Database;
-	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
-	{
-		$con->close();
+	if (!isset($_SESSION['uname']))
 		header("location:../views/loginwrong.html");
-	}
+	$con=new Database;
 	$cur=sha1(mysql_escape_string($_POST['current']));
 	$reply=$con->query("SELECT passwd FROM Accounts WHERE uname='$_SESSION[uname]' AND passwd='$cur'");
 	$error="

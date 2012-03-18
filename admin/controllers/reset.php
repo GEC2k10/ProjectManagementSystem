@@ -2,11 +2,8 @@
 	session_start();
 	require_once("../../classes/database.class.php");
 	$con=new Database;
-	if ($con->checkCookie($_SESSION['sessionID'],'admin')==0)
-	{
-		$con->close();
-		header("Location:../../views/login.html");		
-	}
+	if($_SESSION['uname']!='admin')
+		header("Location:/views/loginwrong.html");		
 	else
 	{
 	$passwd=mysql_escape_string($_POST['passwd']);
@@ -16,6 +13,6 @@
 	$con->query("UPDATE Accounts SET passwd=SHA1('$passwd') WHERE uname='$uname'");
 	$con->close();
 	}
-	header("location:../adminHome.php");
+	header("location:/admin/views/adminHome.php");
 ?>
 

@@ -1,5 +1,5 @@
 <?php
 	require_once("../../classes/git.class.php");
-	$git=new git();
-	$git->upload();
+	$git=new git;
+	$git->checkoutDownload();
 ?>

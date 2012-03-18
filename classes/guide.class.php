@@ -37,7 +37,6 @@ class Guide
    		echo "<div class='commit'>\n";
 		echo "<form action='../controllers/gitCommands/commit.php' method='post'>\n";
 		echo "<center>Enter Commit message:</center>\n <br><br>\n";
-		echo "<input type='hidden' value='$this->_projectName' name='projectName'>\n";
 		echo "<center><textarea name='commitMessage' rows=10 cols=55>\n";
 		echo "Commit time :".date("D M j G:i:s T Y");
 		while($row=mysql_fetch_assoc($reply))
@@ -48,22 +47,11 @@ class Guide
 		echo "</form>\n";
 	   	echo"</div>\n";
 	}
-	public function show_commits()
-	{
-		$reply=$this->_con->query("
-		SELECT Date,Contribution FROM Contributions WHERE uname='$this->_projectName'");
-		echo "<div class=listCommits>";
-		echo "Commits So far <br>";
-		if($reply!=0)
-			while($row=mysql_fetch_assoc($reply))
-				echo "<a href=../views/checkout.php?version=$row[Contribution]>$row[Date]<br></a>";
-		echo "</div>";
-	}
-	public function show_version()
+	public function show_panel_button()
 	{
 		echo "
-		<a href=../views/recentContributions.php style=bottom:50px;position:absolute> 
-		<input type=submit value='View Current Version' style=height:25px>
+		<a href=/views/guidePanel.php style=top:150px;right:50px;position:absolute> 
+		<input type=submit value='Control Panel' style=height:55px>
 		</a>";
 	}
 

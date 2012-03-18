@@ -16,7 +16,7 @@
 	<h4 align=right><a href=../controllers/logout.php>Logout</a></h4>
 	<h1 align=center>Add New Users</h1>
 	<body bgcolor=#cfcfcf style='font-family:ubuntu'>
-	<form action=controllers/add.py method=post>
+	<form action=controllers/add2.php method=post>
 	";
 
 	echo "<div style='left:75px;position:absolute'>Username</div>";
@@ -37,6 +37,7 @@
 	Email Account details:<br><br>
 	Username <input type=text value=gecgitrepository readonly><br>
 	Password&nbsp <input type=password name=password><br>
+	<input type=hidden value=addUsers name=flag>
 	<input type=submit value='Add Users'>
 	</form>
 	</body>

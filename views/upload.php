@@ -1,34 +1,16 @@
-<html>
-<head>
-<link rel="shortcut icon" href="icons/UpIcon.png">
-<style type="css/text">
-body
-{margin-left:1000px;}
-</style>
-</head>
-<title>Upload</title>
-
 <?php
 	session_start();
 	include("../config.php");
 	require_once("../classes/database.class.php");
+	require_once("../classes/common.class.php");
 	$con=new Database;
-	if ($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==0)
-	{
-		$con->close();
-		header("location:loginwrong.html");
-	}
+	$page=new page("Modify Project");
+	if (!isset($_SESSION['uname']) || $_SESSION['uname']==$_SESSION['projectName'])
+		header("location:/views/loginwrong.html");
 	$con->messageDump();
 	$con->close();
 ?>
-
-<h6 align="right"><a href="../controllers/logout.php">
-<input type="submit" value="Logout" style="display:inline"></a>
-<a href="../controllers/homePage.php"><input type="submit" value="Home" style="display:inline"></a></h6>
-<body bgcolor=#cfcfcf alink="#ee0000" link="#0000ee" vlink="#551a8b">
-<h1><center>Upload your files</h1></center>
-<br><br>
-
+<br><br><br>
 <form method='post' action='mkdir.php' style="display:inline">
 	<div style="top:90px;left:0px;position:absolute">
 		<input type='image' src='icons/mkdir.png' value='New Directory'>
@@ -56,10 +38,10 @@ body
 Select target:</i></u><br>
 
 <?php
-	exec("find $PROJECT_ROOT  \( ! -regex '.*/\..*' \) -type d ",$out);
+	exec("find /var/www/repos/$_SESSION[projectName]/$_SESSION[projectName]/  \( ! -regex '.*/\..*' \) -type d ",$out);
 	foreach ($out as &$tmp)
 	{
-		$sub=substr($tmp,strlen($PROJECT_ROOT));
+		$sub=substr($tmp,16+2*strlen($_SESSION['projectName']));
 		if(strcmp($tmp,$out[0])==0)
 			echo "<input type='radio' name='directory' value='$tmp' CHECKED/>$sub<br>";
 		else

@@ -1,14 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <?php
-	require_once("../classes/database.class.php");
 	session_start();
-	$con=new Database;
-	if($con->checkCookie($_SESSION['sessionID'],$_SESSION['uname'])==1)
-	{
-		$con->close();
-		header("location:../controllers/homePage.php");
-	}
-	$con->close();
+	if (isset($_SESSION['uname']))
+		header("location:/cntrollers/homePage.php");
 ?>
 <html><head>
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
