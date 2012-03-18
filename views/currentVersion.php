@@ -14,7 +14,7 @@
 				$file=urlencode(substr($tmp,strlen($GIT_ROOT)));
     			echo "
 				<a href=../views/showfile.php?filename=$file>";
-				echo substr($tmp,strlen($PROJECT_ROOT))."<br></a>";
+				echo substr($tmp,strlen($PROJECT_ROOT)-1)."<br></a>";
 			}
 		?>
 	</i>

@@ -28,7 +28,7 @@
 		exec("find $PROJECT_ROOT  \( ! -regex '.*/\..*' \) ",$out);
 	foreach($out as &$tmp)
 	{
-		$sub=substr($tmp,strlen($PROJECT_ROOT));
+		$sub=substr($tmp,strlen($PROJECT_ROOT)-1);
 		if(strcmp($tmp,$out[0])==0)
 			echo "<input type=checkbox name='files[]' value='$tmp' CHECKED/>$sub<br>\n";
 		else

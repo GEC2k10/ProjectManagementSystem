@@ -10,7 +10,7 @@
 	require_once("../classes/common.class.php");
 	$page=new page("Commits So far");
 	chdir("/var/www/repos/$_SESSION[projectName]");
-	exec("git log --all --graph --pretty=short --decorate",$out);
+	exec("git log --all --graph --oneline --decorate",$out);
 	$regex='/[0-9a-f]{7}/i';
 	$i=0;
 	echo "<font color=blue>";

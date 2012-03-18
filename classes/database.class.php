@@ -3,7 +3,7 @@
 	{
 		private $_con;
   		public function __construct() {
-			include("../config.php");
+			include("/var/www/lag/config.php");
 			$this->_con=mysql_connect($DB_SERVER,$DB_USER,$DB_PASSWORD);
 			mysql_select_db("GitRepo",$this->_con);
 		}
