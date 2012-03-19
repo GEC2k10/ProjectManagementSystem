@@ -11,7 +11,7 @@
 		exec("find $PROJECT_ROOT \( ! -regex '.*/\..*' \) -type f ",$row);
 		foreach ($row as &$tmp)
 			{
-				$file=urlencode(substr($tmp,strlen($GIT_ROOT)));
+				$file=urlencode(substr($tmp,strlen($PROJECT_ROOT)));
     			echo "
 				<a href=../views/showfile.php?filename=$file>";
 				echo substr($tmp,strlen($PROJECT_ROOT)-1)."<br></a>";
