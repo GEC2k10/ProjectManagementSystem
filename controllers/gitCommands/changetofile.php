@@ -1,24 +1,27 @@
 <html>
 <body bgcolor=#cfcfcf>
-<font face=ubuntu size=50>
-Modified Files in Current Version<br/>
+<font face=ubuntu >
+<h2>
+Changes to file <?php echo $_GET['filename'];?><br/>
+</h2>
 </font>
 <font face=ubuntu >
 <?php 
-	include("../../config.php");
 	require_once("../../classes/common.class.php");
 	new page;
+	include("../../config.php");
 	session_start();
 	require_once("../../classes/database.class.php");
 	if (!isset($_SESSION['uname']) || $_SESSION['uname']=='admin')
 		header("location:/views/loginwrong.html");
 	chdir($GIT_ROOT);
-	exec("git diff --name-only",$row);
+	$file=$_SESSION['projectName']."/".$_GET['filename'];
+	exec("git diff $file",$row);
+	echo "<fieldset>";
 	foreach($row as &$temp)
 	{
-		echo "<a href=changetofile.php?filename=";
-		echo substr($temp,strlen($_SESSION['projectName'])+1).">";
-		echo substr($temp,strlen($_SESSION['projectName'])+1)."</a>";
+		echo htmlentities($temp); //htmlentities() used for displaying strings with angle barckets
+		echo "<br/>";
 	}
 ?>
 </font>
