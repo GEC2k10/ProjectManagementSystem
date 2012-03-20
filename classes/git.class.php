@@ -1,5 +1,4 @@
 <?php
-include("../config.php");
 	class git
 	{
 		private $_con,$_student;
@@ -18,6 +17,7 @@ include("../config.php");
 
 		public function upload()
 		{
+			include("$_SERVER[DOCUMENT_ROOT]/config.php");
 			if($_SESSION['uname']==$_SESSION['projectName'])
 				header("location:/views/loginwrong.html");
 			$target=$_POST['directory'];
@@ -47,6 +47,7 @@ include("../config.php");
 
 		public function commit()
 		{
+			include("$_SERVER[DOCUMENT_ROOT]/config.php");
 			if($_SESSION['uname']!=$_SESSION['projectName'])
 				header("location:/views/loginwrong.html");
 			$message=$_POST['commitMessage']."\nEOC";
@@ -68,6 +69,7 @@ include("../config.php");
 		}
 		public function checkoutDownload()
 		{
+			include("$_SERVER[DOCUMENT_ROOT]/config.php");
 			if($_SESSION['uname']!=$_SESSION['projectName'])
 				header("location:/views/loginwrong.html");
 			chdir($GIT_ROOT);
@@ -79,6 +81,7 @@ include("../config.php");
 		}
 		public function download()
 		{
+			include("$_SERVER[DOCUMENT_ROOT]/config.php");
 			chdir($GIT_ROOT);
 			exec("zip -r $DOWNLOAD$_SESSION[uname].zip $_SESSION[projectName]");
 			chdir($DOWNLOAD);
@@ -88,6 +91,7 @@ include("../config.php");
 		}
 		public function branch()
 		{
+			include("$_SERVER[DOCUMENT_ROOT]/config.php");
 			if($_SESSION['uname']!=$_SESSION['projectName'])
 				header("location:/views/loginwrong.html");
 			if(strlen($_POST['branch'])==0)
@@ -102,9 +106,11 @@ include("../config.php");
 		}
 		public function checkout()
 		{
+			include("$_SERVER[DOCUMENT_ROOT]/config.php");
 			if($_SESSION['uname']!=$_SESSION['projectName'])
 				header("location:/views/loginwrong.html");
 			chdir($GIT_ROOT);
+			echo $GIT_ROOT;
 			exec("git checkout $_POST[branch]");
 			$this->_con->query("INSERT INTO messages VALUES('Checked out to branch $_POST[branch]')");
 			header("location:/views/guide.php");

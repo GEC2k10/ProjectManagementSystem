@@ -18,7 +18,7 @@ Select target:<br>
 	exec("find $PROJECT_ROOT \( ! -regex '.*/\..*' \) -type d ",$out);
 	foreach ($out as &$tmp)
 	{
-		$sub=substr($tmp,strlen($PROJECT_ROOT));
+		$sub=substr($tmp,strlen($PROJECT_ROOT)-1);
 		if(strcmp($out[0],$tmp)==0)
 			echo "<input type='radio' name='directory' value='$tmp' CHECKED/>$sub<br>";
 		else

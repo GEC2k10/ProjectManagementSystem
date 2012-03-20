@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	include("../config.php");
-require_once("../classes/common.class.php");
+	include("$_SERVER[DOCUMENT_ROOT]/config.php");
+	require_once("../classes/common.class.php");
 	if (!isset($_SESSION['uname']) || $_SESSION['uname']!=$_SESSION['projectName'])
 		header("location:/views/loginwrong.html");
 	$page=new page("Switch branches");

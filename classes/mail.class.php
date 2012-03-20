@@ -12,12 +12,8 @@
 			require_once("database.class.php");
 			require_once("Mail.php");
 			$this->_con=new Database;
-			if($this->_con->checkCookie($_SESSION['sessionID'],$_SESSION['projectName'])==0 &&
-			$this->_con->checkCookie($_SESSION['sessionID'],"admin")==0)
-			{
-				$this->_con->close();
+			if ($_SESSION['uname']!='admin' && $_SESSION['projectName']!=$_SESSION['uname'])
 				header("location:/views/loginwrong.html");
-			}
 			$invitation="
 This is a computer generated Email.Please note that replies to this address 
 may not be monitered.You have received this mail as you have registered in 
