@@ -17,10 +17,7 @@
 	foreach($out as &$tmp)
 	{
 		if(preg_match($regex,$tmp,$matches))
-		{
-			echo "<a href=$target>$tmp</a><br>";
-			$_SESSION['version']=$matches[0];
-		}
+			echo "<a href=$target?version=$matches[0]>$tmp</a><br>";
 		else
 			echo $tmp."<br>";
 	}

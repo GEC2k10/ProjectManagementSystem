@@ -6,7 +6,7 @@
 		$REPO="%s";
 		$GIT_ROOT=$REPO.$_SESSION[\'projectName\']."/";
 		$PROJECT_ROOT=$REPO.$_SESSION[\'projectName\']."/".$_SESSION[\'projectName\']."/";
-		$DOWNLOAD="/var/www/downloads";
+		$DOWNLOAD="/var/www/downloads/";
 		$DB_SERVER="localhost";
 		$DB_USER="%s";
 		$DB_PASSWORD="%s";

@@ -7,12 +7,11 @@
 		{
 			session_start();
 			require_once("database.class.php");
-			$this->_con=new Database;
 			if(!isset($_SESSION['uname']))
 			{
-				$this->_con->close();
 				header("location:/views/loginwrong.html");
 			}
+			$this->_con=new Database;
 		}
 
 		public function upload()
@@ -51,7 +50,7 @@
 			if($_SESSION['uname']!=$_SESSION['projectName'])
 				header("location:/views/loginwrong.html");
 			$message=$_POST['commitMessage']."\nEOC";
-			chdir("/var/www/repos/$_SESSION[projectName]");  // project name is passed to this script
+			chdir($GIT_ROOT);
 			exec("git init ");
 			exec("git add * ");
 			exec("git commit -am '$message'",$a); // commits with an message 'message' 
