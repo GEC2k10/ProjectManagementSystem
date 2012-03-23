@@ -10,7 +10,6 @@ class File
 		$this->_filename=$filename;
 		if(!file_exists($filename))
 		{
-			echo $filename;
 			echo "
 			<h1 align=center> Sorry the file not found ,or might have Issues !!!! </h1><br/>"; 
 			exit; 
@@ -26,13 +25,24 @@ class File
 	}
 	public function download_button()
 	{
+		session_start();
 		echo "
-		<form action=../controllers/download.php method=post>
-		<input type=hidden value=$this->_filename name=file>
-		<input type=submit value='Download This File' style=height:25px>
+		<form action=/controllers/download.php method=post style=display:inline;>
+		<input type=hidden value=$this->_filename name=file style=display:inline;>
+		<input type=submit value='Download This File' style=height:25px;display:inline;>
+		</form>";
+		if ($_SESSION['uname']==$_SESSION['projectName'])
+		{
+		$file=substr($this->_filename,2*strlen($_SESSION['projectName'])+17);
+		echo "
+		<form action=/controllers/gitCommands/changesToFile.php method=get style=display:inline;>
+		<input type=hidden value=$file name=filename style=display:inline;>
+		<input type=submit value='Diff This File' style=height:25px;display:inline;>
 		</form>
 		";
+		}
 	}
+
 
 	public function Delete($filename)
 	{

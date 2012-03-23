@@ -11,6 +11,8 @@
 		<input type=radio value=commitDetails.php name=target>View Commit message of a commit<br>
 		<input type=radio value=branch.php name=target>Create a new branch<br>
 		<input type=radio value=checkout.php name=target>Switch Branch<br>
+		<input type=radio value=changesToFile.php name=target>View changes to files in version<br>
+		<input type=radio value=newFiles.php name=target>View new files in version<br>
 		<input type=submit value='Proceed>>'>
 	</form>	";
 ?>

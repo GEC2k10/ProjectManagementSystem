@@ -6,6 +6,10 @@
 		header("location:/views/currentVersion.php");
 	if($_POST['target']=='checkout.php')
 		header("location:/views/checkout.php");
+	if($_POST['target']=='changesToFile.php')
+		header("location:/views/changes.php");
+	if($_POST['target']=='newFiles.php')
+		header("location:/views/newFiles.php");
 	$target="/views/$_POST[target]";
 	require_once("../classes/common.class.php");
 	$page=new page("Commits So far");

@@ -115,6 +115,29 @@
 			header("location:/views/guide.php");
 		}
 
+		public function FileDiff()
+		{
+			if($_SESSION['uname']!=$_SESSION['projectName'])
+				header("location:/views/loginwrong.html");
+			include("$_SERVER[DOCUMENT_ROOT]/config.php");
+			require_once("common.class.php");
+			$page=new page("Changes to file $_GET[filename]");
+			chdir($GIT_ROOT);
+			$file=$_SESSION['projectName']."/".$_GET['filename'];
+			exec("git diff $file",$row);
+			if($row==NULL)
+				echo "No Changes or New file!!!!!";
+			else
+			{
+				echo "<fieldset>";
+				foreach($row as &$temp)
+				{
+					echo htmlentities($temp); //htmlentities() used for displaying strings with angle barckets
+					echo "<br/>";
+				}
+			}
+		}
+
 		public function __destruct()
 		{
 			$this->_con->close();
