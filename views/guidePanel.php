@@ -14,6 +14,7 @@
 		<input type=radio value=changesToFile.php name=target>View changes to files in version<br>
 		<input type=radio value=newFiles.php name=target>View new files in version<br>
 		<input type=radio value=fullDiff.php name=target>View diff of current version<br>
+		<input type=radio value=email.php name=target>Email the group<br>
 		<input type=submit value='Proceed>>'>
 	</form>	";
 ?>

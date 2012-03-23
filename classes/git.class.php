@@ -109,10 +109,8 @@
 			if($_SESSION['uname']!=$_SESSION['projectName'])
 				header("location:/views/loginwrong.html");
 			chdir($GIT_ROOT);
-			echo $GIT_ROOT;
 			exec("git checkout $_POST[branch]");
 			$this->_con->query("INSERT INTO messages VALUES('Checked out to branch $_POST[branch]')");
-			header("location:/views/guide.php");
 		}
 		public function FullDiff()
 		{

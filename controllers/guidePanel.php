@@ -12,6 +12,8 @@
 		header("location:/views/newFiles.php");
 	if($_POST['target']=='fullDiff.php')
 		header("location:/controllers/gitCommands/fullDiff.php");
+	if($_POST['target']=='email.php')
+		header("location:/views/email.php");
 	$target="/views/$_POST[target]";
 	require_once("../classes/common.class.php");
 	$page=new page("Commits So far");
