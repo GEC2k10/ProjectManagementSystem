@@ -10,6 +10,8 @@
 		header("location:/views/changes.php");
 	if($_POST['target']=='newFiles.php')
 		header("location:/views/newFiles.php");
+	if($_POST['target']=='fullDiff.php')
+		header("location:/controllers/gitCommands/fullDiff.php");
 	$target="/views/$_POST[target]";
 	require_once("../classes/common.class.php");
 	$page=new page("Commits So far");

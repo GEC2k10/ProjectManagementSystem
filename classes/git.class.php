@@ -114,6 +114,27 @@
 			$this->_con->query("INSERT INTO messages VALUES('Checked out to branch $_POST[branch]')");
 			header("location:/views/guide.php");
 		}
+		public function FullDiff()
+		{
+			if($_SESSION['uname']!=$_SESSION['projectName'])
+				header("location:/views/loginwrong.html");
+			include("$_SERVER[DOCUMENT_ROOT]/config.php");
+			require_once("common.class.php");
+			$page=new page("Diff of the Current Version");
+			chdir($GIT_ROOT);
+			exec("git diff",$row);
+			if($row==NULL)
+				echo "No Changes or New file!!!!!";
+			else
+			{
+				echo "<fieldset>";
+				foreach($row as &$temp)
+				{
+					echo htmlentities($temp); //htmlentities() used for displaying strings with angle barckets
+					echo "<br/>";
+				}
+			}
+		}
 
 		public function FileDiff()
 		{
