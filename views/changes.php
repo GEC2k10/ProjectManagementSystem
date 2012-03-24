@@ -12,10 +12,13 @@
 		header("location:/views/loginwrong.html");
 	chdir($GIT_ROOT);
 	exec("git diff --name-only",$row);
-	foreach($row as &$temp)
-	{
-		echo "<a href=/controllers/gitCommands/changesToFile.php?filename=";
-		echo substr($temp,strlen($_SESSION['projectName'])+1).">";
-		echo substr($temp,strlen($_SESSION['projectName'])+1)."</a><br>";
-	}
+	if($row==NULL)
+		echo "<br><br>No Modified files!!!";
+	else
+		foreach($row as &$temp)
+		{
+			echo "<a href=/controllers/gitCommands/changesToFile.php?filename=";
+			echo substr($temp,strlen($_SESSION['projectName'])+1).">";
+			echo substr($temp,strlen($_SESSION['projectName'])+1)."</a><br>";
+		}
 ?>

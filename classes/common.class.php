@@ -21,7 +21,7 @@
 						<input type=submit value=Logout style=display:inline>
 					</a>
 				</div>
-				<body bgcolor=#cfcfcf>";
+				<body bgcolor=#cfcfcf vlink=blue>";
 			echo $header;
 		}
 		
