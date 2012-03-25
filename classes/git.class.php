@@ -63,7 +63,10 @@
 				$this->_con->query("UPDATE Contributions SET commit='1' WHERE projectName='$_SESSION[projectName]'");
 			}
 			else
+			{
 				$this->_con->query("INSERT INTO messages VALUES('Nothing to Commit!!!')");
+				$this->_con->query("UPDATE Contributions SET commit='1' WHERE projectName='$_SESSION[projectName]'");
+			}
 			header("location:/views/guide.php");
 		}
 		public function checkoutDownload()
