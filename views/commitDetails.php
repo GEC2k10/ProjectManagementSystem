@@ -12,6 +12,12 @@
 	$row=mysql_fetch_assoc($reply);
 	chdir($GIT_ROOT);
 	exec("git log $_GET[version]",$out);
+	if($out==NULL)
+	{
+		$con->query("INSERT INTO messages VALUES('Commit doesnt exist!!!!')");
+		header("location:/views/guide.php");
+	}
+		
 	$commitMessage='';
 	foreach($out as $tmp)
 	{
