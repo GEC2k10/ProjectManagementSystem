@@ -25,6 +25,15 @@
 				$mail->sendMail($row['email']);
 		header("location:/views/guide.php");
 	}
+	else if($_GET['flag']=='commit')
+	{
+		$mail=new email(4);
+		$reply=$con->query("SELECT email FROM Accounts WHERE projectName='$_SESSION[projectName]' AND projectName!=uname");
+		if($reply!=0)
+			while($row=mysql_fetch_assoc($reply))
+				$mail->sendMail($row['email']);
+		header("location:/views/guide.php");
+	}
 	header("location:/views/guide.php");
 
 ?>

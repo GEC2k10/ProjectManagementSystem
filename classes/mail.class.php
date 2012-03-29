@@ -2,10 +2,9 @@
 	class email
 	{
 		private $_from,$_to,$_body,$_subject,$_username,$_password;
-		private $_con,$_bodyid;
+		private $_con;
 		public function __construct($body_id=0,$uname=0,$passwd=0)
 		{
-			$this->_bodyid=$body_id;
 			$this->_from="APTS <gecgitrepository@gmail.com>";
 			$this->_username="gecgitrepository@gmail.com";
 			$this->_password="importre";
@@ -34,14 +33,28 @@ However,you may request your guide to reset to the previous version if necessary
 
 Also please download the current version from the website.Any further development
 must be centered on that version.";
+			$commit_notify="
+This is a computer generated mail from The Academic Project Tracker,GEC Thrissur.
+
+The project guide for the project '%s' has commited the current version of the project.";
 			if($body_id==1)
 			{
 				$this->_body=sprintf($invitation,$uname,$passwd);
 				$this->_subject="Academic Project Tracker account details";
 			}
-			if($body_id=2)
+			else if($body_id==2)
 			{
 				$this->_body=sprintf($branch_notify,$_SESSION['projectName']);
+				$this->_subject="Project Tracker Notification";
+			}
+			else if($body_id==3)
+			{
+				$this->_body=$_SESSION['body'];
+				$this->_subject=$_SESSION['subject'];
+			}
+			else if($body_id==4)
+			{
+				$this->_body=sprintf($commit_notify,$_SESSION['projectName']);
 				$this->_subject="Project Tracker Notification";
 			}
 
@@ -49,11 +62,6 @@ must be centered on that version.";
 
 		public function sendMail($to)
 		{
-			if($this->_bodyid==3)
-			{
-				$this->_body=$_SESSION['body'];
-				$this->_subject=$_SESSION['subject'];
-			}
 			$this->_to=$to;
     	    $host = "ssl://smtp.gmail.com";
         	$port = "465";
